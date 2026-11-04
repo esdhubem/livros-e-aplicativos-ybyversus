@@ -1,0 +1,3203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Das Ideologias ao Bem Viver Bem | YBY Versus</title>
+    <style>
+        :root {
+            --bg-base: #060b14;
+            --bg-card: rgba(13, 22, 38, 0.72);
+            --bg-card-hover: rgba(18, 30, 52, 0.88);
+            --bg-glass-pill: rgba(255, 255, 255, 0.06);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.28);
+            --border-gold-hover: rgba(212, 175, 55, 0.65);
+            --accent: #d4af37;
+            --gold: #d4af37;
+            --gold-light: #fcd34d;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --blue-accent: #38bdf8;
+            --blue-glow: rgba(56, 189, 248, 0.15);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #020712;
+            background-image: 
+                radial-gradient(circle at 50% 15%, rgba(18, 48, 92, 0.45) 0%, rgba(2, 7, 18, 0.92) 80%),
+                url('assets/cosmic-sky.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* Fundo Cósmico Celestial (Órbitas Douradas & Estrelas) */
+        .fixed-cosmic-universe {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .orbit-svg {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+        .orbit-top-right {
+            top: -120px;
+            right: -120px;
+            width: 720px;
+            height: 720px;
+        }
+        .orbit-bottom-left {
+            bottom: -150px;
+            left: -150px;
+            width: 650px;
+            height: 650px;
+        }
+        .star-point {
+            position: absolute;
+            color: #E5C384;
+            pointer-events: none;
+            opacity: 0.7;
+            user-select: none;
+        }
+        .star-1 { top: 10%; left: 8%; font-size: 1.4rem; animation: starPulse 3s infinite ease-in-out; }
+        .star-2 { top: 18%; right: 12%; font-size: 1.1rem; color: #FBF0D9; opacity: 0.85; animation: starPulse 4s infinite ease-in-out 1s; }
+        .star-3 { top: 38%; left: 4%; font-size: 0.9rem; opacity: 0.5; }
+        .star-4 { top: 55%; right: 6%; font-size: 1.3rem; color: #FBF0D9; animation: starPulse 3.5s infinite ease-in-out 0.5s; }
+        .star-5 { top: 75%; left: 10%; font-size: 1.2rem; animation: starPulse 4.5s infinite ease-in-out 2s; }
+        .star-6 { top: 88%; right: 15%; font-size: 0.85rem; opacity: 0.5; }
+        .star-7 { top: 28%; left: 22%; font-size: 0.75rem; color: #FBF0D9; opacity: 0.6; }
+
+        @keyframes starPulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 0.95; transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(229,195,132,0.8)); }
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; position: relative; z-index: 1; }
+
+        .back-nav {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .btn-back:hover {
+            background: rgba(212, 175, 55, 0.18);
+            border-color: var(--gold);
+            color: #fff;
+            transform: translateX(-3px);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .versus-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 30px 20px 40px 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            position: relative;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 12px;
+            padding: 4px 14px;
+            background: rgba(212, 175, 55, 0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.6em;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+            font-weight: 800;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        header h1 span {
+            background: linear-gradient(135deg, #fcd34d 0%, #d4af37 60%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15em;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* BARRA INTERATIVA: CHIPS DE FILTRO (Estilo YBY Versus) */
+        .interactive-controls-bar {
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+            margin-bottom: 40px;
+            background: rgba(10, 18, 32, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            padding: 12px 18px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.08);
+        }
+
+        .chips-bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 0 4px;
+        }
+
+        .chips-bar-title {
+            font-size: 0.78em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gold);
+        }
+
+        .chips-slide-hint {
+            font-size: 0.82em;
+            color: var(--gold-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* Carrossel de Chips (Formatos/Filtros) */
+        .filter-chips-scroller {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 4px 2px;
+            scrollbar-width: none; /* Firefox */
+        }
+        .filter-chips-scroller::-webkit-scrollbar { display: none; }
+
+        .chip-btn {
+            white-space: nowrap;
+            padding: 9px 18px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            user-select: none;
+        }
+
+        .chip-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .chip-btn.active {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.28), rgba(212, 175, 55, 0.12));
+            border-color: var(--gold);
+            color: #fff;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .chip-count {
+            font-size: 0.78em;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.35);
+            color: var(--gold-light);
+        }
+
+        /* Seção de Introdução e Caixas Informativas */
+        .intro-box, .info-box {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-left: 4px solid var(--gold);
+            padding: 30px;
+            border-radius: 0 20px 20px 0;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .intro-box h2 { color: var(--gold-light); margin-bottom: 20px; font-size: 1.6em; }
+        .intro-box p { margin-bottom: 15px; color: var(--text); }
+        .intro-box ul { margin-left: 20px; margin-bottom: 15px; color: var(--text-secondary); }
+        .intro-box li { margin-bottom: 8px; }
+
+        /* Títulos de Grupo */
+        .group-title {
+            text-align: center;
+            font-size: 2.1em;
+            color: var(--text);
+            margin: 60px 0 25px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            letter-spacing: -0.01em;
+        }
+        .group-title span { color: var(--gold); }
+        .group-subtitle {
+            text-align: center;
+            max-width: 850px;
+            margin: -10px auto 35px auto;
+            color: var(--text-muted);
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* Grid de Cartões */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        /* CARD GLASSMORPHISM MODERNO */
+        .philosophy-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-gold-hover);
+            background: var(--bg-card-hover);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--gold-glow);
+        }
+
+        .card-header {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 16px;
+        }
+        
+        .card-top-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .card-header h3 {
+            color: var(--gold-light);
+            font-size: 1.35em;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        /* Botão Comparar no Card */
+        .btn-card-compare {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-card-compare:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .btn-card-compare.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            font-weight: 700;
+            box-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        .card-desc {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-top: 6px;
+        }
+
+        .card-examples {
+            font-size: 0.88em;
+            color: var(--gold);
+            margin-top: 12px;
+            background: rgba(212, 175, 55, 0.08);
+            padding: 8px 12px;
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+            line-height: 1.4;
+        }
+        .card-examples strong { color: #fff; }
+
+        /* MINI-TABS DENTRO DE CADA CARD */
+        .card-tabs-nav {
+            display: flex;
+            gap: 6px;
+            margin: 12px 0 16px 0;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .card-tabs-nav::-webkit-scrollbar { display: none; }
+
+        .card-tab-btn {
+            flex: 1;
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.82em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .card-tab-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .card-tab-btn.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-section {
+            margin-bottom: 15px;
+            transition: opacity 0.25s ease;
+        }
+
+        .card-section h4 { 
+            font-size: 0.9em; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .h-defend { color: var(--success); }
+        .h-critic { color: var(--warning); }
+        .h-sources { color: var(--gold-light); }
+
+        .card-section ul { margin-left: 18px; color: var(--text); font-size: 0.95em; }
+        .card-section li { margin-bottom: 10px; line-height: 1.55; }
+
+        .sources-list { 
+            font-size: 0.85em; 
+            color: var(--text-muted); 
+            background: rgba(0, 0, 0, 0.35); 
+            padding: 15px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            margin-top: auto; 
+            transition: opacity 0.25s ease;
+        }
+        .sources-list p { margin-bottom: 8px; line-height: 1.45; }
+        .sources-list a { color: var(--gold-light); text-decoration: none; border-bottom: 1px dotted var(--gold); }
+        .sources-list a:hover { color: #fff; border-bottom-style: solid; text-shadow: 0 0 10px var(--gold-glow); }
+
+        /* SÍNTESE COM VISUAL MODERNO */
+        .synthesis-section {
+            background: radial-gradient(circle at 10% 20%, rgba(34, 197, 94, 0.15) 0%, transparent 60%),
+                        radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                        var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(34, 197, 94, 0.4);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+        }
+        .synthesis-section::before {
+            content: '🌿';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 150px;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+        .synthesis-section h2 { color: var(--success); font-size: 2.1em; margin-bottom: 20px; }
+        .synthesis-section p { font-size: 1.1em; margin-bottom: 15px; color: var(--text); line-height: 1.7; }
+        .synthesis-highlight {
+            background: rgba(0, 0, 0, 0.35);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-left: 4px solid var(--gold);
+            margin-top: 25px;
+        }
+
+        /* GAVETA / MODAL DE COMPARAÇÃO "VERSUS" */
+        .versus-bar {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            z-index: 999;
+            background: rgba(13, 22, 38, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid var(--gold);
+            padding: 12px 24px;
+            border-radius: 40px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--gold-glow);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .versus-bar.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .versus-bar-text {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        .versus-bar-text span {
+            color: var(--gold-light);
+        }
+
+        .btn-versus-open {
+            background: linear-gradient(135deg, #fcd34d, #d4af37);
+            color: #000;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--gold-glow);
+            transition: all 0.2s;
+        }
+        .btn-versus-open:hover { transform: scale(1.05); }
+
+        .btn-versus-clear {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.1em;
+            padding: 4px;
+        }
+        .btn-versus-clear:hover { color: #fff; }
+
+        /* MODAL POPUP VERSUS */
+        .versus-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(4, 8, 16, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .versus-modal.active { display: flex; }
+
+        .versus-modal-card {
+            background: rgba(13, 22, 38, 0.95);
+            border: 1px solid var(--gold);
+            border-radius: 24px;
+            max-width: 950px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px var(--gold-glow);
+            position: relative;
+        }
+
+        .versus-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .versus-modal-close:hover { background: rgba(255, 255, 255, 0.2); }
+
+        .versus-modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .versus-modal-header h2 {
+            color: var(--gold-light);
+            font-size: 1.8em;
+            margin-bottom: 6px;
+        }
+
+        .versus-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .versus-col {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.9em; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .synthesis-section { padding: 25px; }
+            .interactive-controls-bar { top: 10px; padding: 12px; }
+            .versus-columns { grid-template-columns: 1fr; }
+            .versus-modal-card { padding: 20px; }
+        }
+    </style>
+
+    <!-- SUPORTE A EMBEDDED MODE NO BEMVIVER.HTML -->
+    <script>
+      if (window.location.search.includes('embed=1') || window.self !== window.top) {
+        document.documentElement.classList.add('is-embedded');
+      }
+    </script>
+    <style>
+      html.is-embedded #filosofias-top-nav-bar,
+      html.is-embedded .top-4-cards-container,
+      html.is-embedded .back-nav {
+        display: none !important;
+      }
+      html.is-embedded body {
+        padding-top: 6px !important;
+        background: transparent !important;
+      }
+      html.is-embedded .container {
+        padding: 0 4px !important;
+        max-width: 100% !important;
+      }
+    </style>
+
+</head>
+<body>
+
+    <!-- ======================================================== -->
+    <!-- FUNDO CÓSMICO CELESTIAL (ÓRBITAS DOURADAS & ESTRELAS)    -->
+    <!-- ======================================================== -->
+    <div class="fixed-cosmic-universe" aria-hidden="true">
+        <!-- Órbitas Douradas Superiores / Direita -->
+        <svg class="orbit-svg orbit-top-right" viewBox="0 0 600 600" fill="none">
+            <circle cx="300" cy="300" r="280" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="3 6"/>
+            <circle cx="300" cy="300" r="240" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="300" cy="300" r="200" stroke="#D4AF37" stroke-width="0.8" stroke-dasharray="8 8"/>
+            <circle cx="300" cy="300" r="160" stroke="#E5C384" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="300" cy="300" r="120" stroke="#D4AF37" stroke-width="0.8"/>
+            <circle cx="300" cy="300" r="70" stroke="#E5C384" stroke-width="1.2" stroke-dasharray="4 6"/>
+            <circle cx="460" cy="300" r="9" fill="#E5C384" filter="drop-shadow(0 0 12px rgba(229,195,132,0.8))"/>
+            <circle cx="160" cy="220" r="5" fill="#FBF0D9"/>
+        </svg>
+
+        <!-- Órbitas Douradas Inferiores / Esquerda -->
+        <svg class="orbit-svg orbit-bottom-left" viewBox="0 0 600 600" fill="none">
+            <circle cx="300" cy="300" r="260" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="4 6"/>
+            <circle cx="300" cy="300" r="210" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="300" cy="300" r="150" stroke="#D4AF37" stroke-width="1" stroke-dasharray="6 6"/>
+            <circle cx="300" cy="300" r="90" stroke="#E5C384" stroke-width="1.4"/>
+            <circle cx="390" cy="300" r="7" fill="#E5C384" filter="drop-shadow(0 0 10px rgba(229,195,132,0.7))"/>
+        </svg>
+
+        <!-- Estrelas Douradas Shimmering de 4 Pontas (✦) -->
+        <span class="star-point star-1">✦</span>
+        <span class="star-point star-2">✦</span>
+        <span class="star-point star-3">✦</span>
+        <span class="star-point star-4">✦</span>
+        <span class="star-point star-5">✦</span>
+        <span class="star-point star-6">✦</span>
+        <span class="star-point star-7">✦</span>
+    </div>
+
+<div class="container">
+    
+    <!-- BARRA FIXA DE NAVEGAÇÃO ENTRE OS 4 MODOS DO BEM VIVER -->
+    <div id="filosofias-top-nav-bar" class="top-4-cards-container" style="margin: 16px 0 24px 0; display: flex; flex-direction: column; gap: 8px;">
+      <!-- 1. Radar das Dimensões -->
+      <a href="bemviver.html#radar" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 14px; background: rgba(6, 21, 43, 0.7); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; text-decoration: none; transition: all 0.2s;">
+        <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 15px; border: 1px solid rgba(255,255,255,0.08);">🎯</div>
+          <div>
+            <div style="font-size: 12px; font-weight: bold; color: #cbd5e1; display: flex; align-items: center; gap: 6px;">
+              Radar das Dimensões
+              <span style="font-size: 9px; padding: 1px 6px; border-radius: 9999px; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.08);">Teko Porã & Ubuntu</span>
+            </div>
+            <p style="font-size: 10px; color: #64748b; margin-top: 2px;">Calculadora interativa, 9 dimensões e dados regionais</p>
+          </div>
+        </div>
+        <span style="color: #64748b; font-size: 14px;">›</span>
+      </a>
+
+      <!-- 2. Perspectivas dos Índices -->
+      <a href="bemviver.html" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 14px; background: rgba(6, 21, 43, 0.7); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; text-decoration: none; transition: all 0.2s;">
+        <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 15px; border: 1px solid rgba(255,255,255,0.08);">⚖️</div>
+          <div>
+            <div style="font-size: 12px; font-weight: bold; color: #cbd5e1; display: flex; align-items: center; gap: 6px;">
+              Perspectivas dos Índices
+              <span style="font-size: 9px; padding: 1px 6px; border-radius: 9999px; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.08);">Além do PIB</span>
+            </div>
+            <p style="font-size: 10px; color: #64748b; margin-top: 2px;">Painel crítico com 10 indicadores oficiais (FIB, IDH, Pegada e Gini)</p>
+          </div>
+        </div>
+        <span style="color: #64748b; font-size: 14px;">›</span>
+      </a>
+
+      <!-- 3. Filosofias e o Futuro do Bem Viver (ATIVO NESTA PÁGINA) -->
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 14px; background: linear-gradient(135deg, #0C2242, #041325); border: 1.5px solid #d4af37; box-shadow: 0 0 15px rgba(212,175,55,0.25);">
+        <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(212,175,55,0.2); display: flex; align-items: center; justify-content: center; font-size: 15px; border: 1px solid rgba(212,175,55,0.4);">🌍</div>
+          <div>
+            <div style="font-size: 12px; font-weight: bold; color: #d4af37; display: flex; align-items: center; gap: 6px;">
+              Filosofias e o Futuro do Bem Viver
+              <span style="font-size: 9px; padding: 1px 6px; border-radius: 9999px; background: rgba(34,197,94,0.2); color: #22c55e; border: 1px solid rgba(34,197,94,0.3);">Mapas Mentais</span>
+            </div>
+            <p style="font-size: 10px; color: #cbd5e1; margin-top: 2px;">Ubuntu, Teko Porã, Sumak Kawsay, Economia Budista & Decrescimento</p>
+          </div>
+        </div>
+        <span style="font-size: 9.5px; font-weight: bold; color: #d4af37; background: rgba(212,175,55,0.18); border: 1px solid rgba(212,175,55,0.3); padding: 2px 8px; border-radius: 9999px;">● Ativo</span>
+      </div>
+
+      <!-- 4. Comparativo: PIB vs. Bem Viver & Ubuntu -->
+      <a href="bemviver.html#comparativo" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 14px; background: rgba(6, 21, 43, 0.7); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; text-decoration: none; transition: all 0.2s;">
+        <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 15px; border: 1px solid rgba(255,255,255,0.08);">⚖️</div>
+          <div>
+            <div style="font-size: 12px; font-weight: bold; color: #cbd5e1; display: flex; align-items: center; gap: 6px;">
+              Comparativo: PIB vs. Bem Viver & Ubuntu
+              <span style="font-size: 9px; padding: 1px 6px; border-radius: 9999px; background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3);">Radar & Contrastes</span>
+            </div>
+            <p style="font-size: 10px; color: #64748b; margin-top: 2px;">Gráfico radar duplo, tabela prática ponto a ponto e bússola de equilíbrio</p>
+          </div>
+        </div>
+        <span style="color: #64748b; font-size: 14px;">›</span>
+      </a>
+    </div>
+
+    <div class="back-nav">
+        <a href="bemviver.html" class="btn-back">← Voltar para Economia do Bem Viver</a>
+        <div class="versus-status-badge">
+            <span>✨</span> Edição Interativa
+        </div>
+    </div>
+
+    <header>
+        <div class="brand-badge">⚡ YBY VersuS • Saberes & Sociedades</div>
+        <h1>Das Ideologias ao <span>Bem Viver Bem</span></h1>
+        <p>Para construir o futuro, precisamos entender o passado e o presente. Explore, compare e analise as diferentes correntes que moldam o mundo contemporâneo.</p>
+    </header>
+
+    <!-- BANNER DE DESTAQUE: QUIZ DO BEM VIVER -->
+    <div style="margin: 12px 0 20px 0; padding: 14px 16px; border-radius: 16px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 78, 59, 0.25)); border: 1.5px solid rgba(52, 211, 153, 0.4); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px; min-width: 200px;">
+        <div style="width: 38px; height: 38px; border-radius: 10px; background: rgba(52, 211, 153, 0.2); display: flex; align-items: center; justify-content: center; font-size: 20px; border: 1px solid rgba(52, 211, 153, 0.4);">🌿</div>
+        <div>
+          <div style="font-size: 13px; font-weight: bold; color: #a7f3d0;">Descubra sua Sintonia Filosófica</div>
+          <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Responda ao Quiz interativo e descubra qual visão de Bem Viver mais combina com seu estilo de vida</div>
+        </div>
+      </div>
+      <a href="bemviver-quiz.html" target="_top" style="padding: 8px 16px; border-radius: 9999px; background: #10b981; color: #ffffff; font-size: 11.5px; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4); transition: transform 0.2s;">
+        <span>Fazer o Quiz</span> →
+      </a>
+    </div>
+
+
+    <!-- BARRA INTERATIVA: CHIPS DE FILTRO (Inspirado no App YBY Versus) -->
+    <div class="interactive-controls-bar">
+        <div class="chips-bar-header">
+            <span class="chips-bar-title">TEMAS & MODELOS</span>
+            <span class="chips-slide-hint">Deslize para ver todos 👉</span>
+        </div>
+        <div class="filter-chips-scroller">
+            <button class="chip-btn active" data-filter="all"><span class="chip-icon">✨</span> Todos</button>
+            <button class="chip-btn" data-filter="sec-g1"><span class="chip-icon">🏛️</span> Ideologias <span class="chip-count">6</span></button>
+            <button class="chip-btn" data-filter="sec-g2"><span class="chip-icon">🌐</span> Países <span class="chip-count">21</span></button>
+            <button class="chip-btn" data-filter="sec-g3"><span class="chip-icon">🌿</span> Filosofias de Vida <span class="chip-count">4</span></button>
+            <button class="chip-btn" data-filter="sec-brasil"><span class="chip-icon">🇧🇷</span> Cenário Brasileiro <span class="chip-count">3</span></button>
+            <button class="chip-btn" data-filter="sec-mutacoes"><span class="chip-icon">⚠️</span> Mutações <span class="chip-count">6</span></button>
+            <button class="chip-btn" data-filter="sec-rupturas"><span class="chip-icon">🛡️</span> Contextos Críticos <span class="chip-count">6</span></button>
+            <button class="chip-btn" data-filter="sec-compasso"><span class="chip-icon">🧭</span> Compasso Ideal <span class="chip-count">15</span></button>
+            <button class="chip-btn" data-filter="sec-sintese"><span class="chip-icon">🌱</span> Síntese Proposta</button>
+        </div>
+    </div>
+
+    <!-- INTRODUÇÃO -->
+    <div class="intro-box">
+        <h2>📖 Como ler esta página?</h2>
+        <p>Aqui são apresentados vários sistemas que existem no mundo e eles são apresentados através de quadros quais são os modelos e as filosofias que têm grande influência nas sociedades de hoje.</p>
+        <p>Eles não formam uma escala de classificação, nem um ranking, apresentamos retratos de jeitos diferentes de organizar a vida em sociedade.</p>
+        <p>Eles estão em três grupos porque são coisas de natureza diferente:</p>
+        <ul>
+            <li><strong>Ideologias e sistemas econômicos:</strong> ideias sobre como organizar a economia, como o capitalismo e o socialismo.</li>
+            <li><strong>Modelos de países:</strong> jeitos concretos com que cada país combina mercado, Estado e sociedade. Nenhum país é "puro". Os países nórdicos, por exemplo, são economias de mercado com um forte Estado de bem-estar.</li>
+            <li><strong>Filosofias de vida:</strong> visões de mundo sobre o que é viver bem, vindas de povos, tradições ou do sistema hegemônico, que não devem ser reduzidas a uma só categoria.</li>
+        </ul>
+        <p>Em cada quadro você encontra o que seus defensores dizem, o que seus críticos dizem e as fontes, para conferir e formar a sua própria opinião. A perspectiva desta página aparece apenas na <strong>Síntese</strong>, no fim, e é uma proposta nossa, não um consenso.</p>
+    </div>
+
+    <!-- GRUPO 1 -->
+    <section id="sec-g1" class="page-section">
+        <h2 class="group-title">Grupo 1: <span>Ideologias e Sistemas Econômicos</span></h2>
+        <div class="cards-grid">
+        <!-- Capitalismo -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Capitalismo</h3>
+                <p class="card-desc">Sistema baseado em propriedade privada, mercados e busca de lucro, com graus muito diferentes de intervenção do Estado conforme o país.</p>
+                <div class="card-examples">
+                    <strong>📍 Exemplos:</strong> Estados Unidos, Singapura, Hong Kong, Suíça e economias com forte ênfase na livre iniciativa.
+                </div>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Valorizam a inovação, a eficiência e a iniciativa, defendendo que mercados livres ampliam a liberdade e a prosperidade.</li>
+                    <li>Apontam a queda da pobreza extrema no mundo: segundo o Banco Mundial, de cerca de 38% da população em 1990 para cerca de 8,5% em 2024 (critério de US$ 2,15 por dia).</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Desigualdade: Thomas Piketty argumenta que, quando o retorno do capital supera o crescimento da economia, a riqueza tende a se concentrar.</li>
+                    <li>Custos ambientais: O Relatório Stern (2006) descreveu a mudança do clima como a maior falha de mercado já vista.</li>
+                    <li>O Banco Mundial (2024) aponta que a redução da pobreza quase parou nos últimos anos e, pelo critério de US$ 6,85 por dia, o número de pessoas pobres mudou pouco desde 1990.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.worldbank.org/en/publication/poverty-prosperity-and-planet" target="_blank" rel="noopener">Banco Mundial: Poverty, Prosperity, and Planet Report (2024) ↗</a></p>
+                <p>• <a href="https://piketty.pse.ens.fr/en/capital21c2" target="_blank" rel="noopener">Thomas Piketty: O Capital no Século XXI (2013) ↗</a></p>
+                <p>• <a href="https://www.lse.ac.uk/granthaminstitute/publication/the-economics-of-climate-change-the-stern-review/" target="_blank" rel="noopener">Nicholas Stern: The Economics of Climate Change / Stern Review (2006) ↗</a></p>
+                <p>• <a href="https://www.adamsmith.org/the-wealth-of-nations" target="_blank" rel="noopener">Adam Smith: A Riqueza das Nações (1776) ↗</a>; Milton Friedman (1962)</p>
+            </div>
+        </div>
+
+        <!-- Socialismo -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Socialismo e Comunismo Clássicos</h3>
+                <p class="card-desc">Propõem a propriedade coletiva ou social dos meios de produção e mais planejamento da economia para reduzir as desigualdades de classe.</p>
+                <div class="card-examples">
+                    <strong>📍 Exemplos:</strong> União Soviética (URSS histórica), Cuba, Coreia do Norte e experiências do leste europeu no século XX.
+                </div>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Igualdade material, serviços universais e participação dos trabalhadores nas decisões econômicas.</li>
+                    <li>Erik Olin Wright propõe "utopias reais": cooperativas, democracia econômica e renda básica como alternativas que já existem em parte.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Ludwig von Mises (1920) sustenta que, sem preços de mercado, o planejamento central não consegue calcular custos e recursos.</li>
+                    <li>Friedrich Hayek (1944) alerta que o planejamento central tende a concentrar poder político.</li>
+                    <li>Críticos citam experiências históricas em que partidos únicos restringiram liberdades e a economia sofreu com escassez (analisado por János Kornai).</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.marxists.org/portugues/marx/1848/ManifestoDoPartidoComunista/" target="_blank" rel="noopener">Karl Marx e Friedrich Engels: Manifesto Comunista (1848) ↗</a></p>
+                <p>• <a href="https://www.versobooks.com/products/2157-envisioning-real-utopias" target="_blank" rel="noopener">Erik Olin Wright: Envisioning Real Utopias (Verso, 2010) ↗</a></p>
+                <p>• <a href="https://mises.org/library/book/economic-calculation-socialist-commonwealth" target="_blank" rel="noopener">Ludwig von Mises: O Cálculo Econômico na Comunidade Socialista (1920) ↗</a></p>
+                <p>• <a href="https://www.iea.org.uk/publications/research/the-road-to-serfdom" target="_blank" rel="noopener">Friedrich Hayek: O Caminho da Servidão (1944) ↗</a></p>
+                <p>• <a href="https://press.princeton.edu/books/paperback/9780691003931/the-socialist-system" target="_blank" rel="noopener">János Kornai: The Socialist System (Princeton, 1992) ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Economia Mista -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Economia Mista</h3>
+                <p class="card-desc">Combina elementos do mercado e do planejamento: o mercado funciona para a produção e iniciativa privada, mas o Estado regula, fiscaliza e garante serviços públicos e proteção social.</p>
+                <div class="card-examples">
+                    <strong>📍 Exemplos:</strong> Brasil, países da Europa Ocidental (França, Alemanha, Reino Unido), Canadá e a maioria das democracias contemporâneas.
+                </div>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Equilíbrio entre liberdade e proteção social: alia a inovação e o dinamismo das empresas privadas com redes públicas de saúde, educação e leis de proteção ao trabalhador.</li>
+                    <li>John Maynard Keynes e Paul Samuelson fundamentam a importância da intervenção estatal para estabilizar crises econômicas e corrigir falhas de mercado e abusos monopolistas.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Tensão contínua sobre a calibragem: é difícil encontrar o ponto certo entre os dois lados sem criar excesso de burocracia e peso tributário, nem desproteção social.</li>
+                    <li>Críticos liberais apontam risco de ineficiência e captura política do Estado; críticos mais radicais apontam que o modelo apenas remedia sintomas sem extinguir a desigualdade estrutural.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.hetwebsite.net/het/profiles/keynes.htm" target="_blank" rel="noopener">John Maynard Keynes: Teoria Geral do Emprego, do Juro e da Moeda (1936) ↗</a></p>
+                <p>• <a href="https://www.nobelprize.org/prizes/economic-sciences/1970/samuelson/biographical/" target="_blank" rel="noopener">Paul Samuelson: Economics — A Síntese da Economia Mista Moderna (1948) ↗</a></p>
+                <p>• <a href="https://wwnorton.com/books/Economics-of-the-Public-Sector/" target="_blank" rel="noopener">Joseph Stiglitz: Economics of the Public Sector (W. W. Norton) ↗</a></p>
+                <p>• <a href="https://www.oecd.org/" target="_blank" rel="noopener">OCDE: Indicadores de Regulação de Mercados e Serviços Públicos ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Liberalismo -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Liberalismo (Político e Econômico)</h3>
+                <p class="card-desc">Filosofia que defende a primazia da liberdade individual, o Estado de Direito (<em>Rule of Law</em>), direitos de propriedade, limitação constitucional do poder governamental e livre concorrência de mercado.</p>
+                <div class="card-examples">
+                    <strong>📍 Exemplos:</strong> Tradições constitucionais ocidentais (Reino Unido, EUA, democracias liberais modernas).
+                </div>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem (Pilares e Forças)</h4>
+                <ul>
+                    <li><strong>Estado de Direito e Liberdades Civis:</strong> Garantia institucional de direitos fundamentais, liberdade de expressão, separação de poderes (Locke, Montesquieu) e igualdade perante a lei.</li>
+                    <li><strong>Dinamismo e Inovação:</strong> A livre iniciativa, direitos de propriedade protegidos e a concorrência aberta funcionam como motores descentralizados de inovação, eficiência e prosperidade.</li>
+                    <li><strong>Autonomia Individual:</strong> O indivíduo é soberano para escolher seu próprio projeto de vida sem tutela ou doutrinação estatal imposta.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam (Limites e Consequências)</h4>
+                <ul>
+                    <li><strong>Desigualdades Estruturais:</strong> Autores como Thomas Piketty e Joseph Stiglitz argumentam que mercados desregulados tendem à concentração excessiva de renda e riqueza no topo.</li>
+                    <li><strong>Bens Públicos e Ecologia:</strong> Forças puras de mercado falham em proteger bens comuns ecológicos (como o clima) ou assegurar serviços essenciais desmercantilizados a populações vulneráveis.</li>
+                    <li><strong>Erosão Comunitária:</strong> Filósofos comunitaristas (como Michael Sandel) apontam que um individualismo extremo pode enfraquecer a coesão social e o sentido de bem comum.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://plato.stanford.edu/entries/liberalism/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy: Liberalism ↗</a></p>
+                <p>• <a href="https://www.cambridge.org/core/books/two-treatises-of-government/77EE4EF6E5EE4F5BDD078B3747A5A90F" target="_blank" rel="noopener">John Locke: Two Treatises of Government (1689) ↗</a></p>
+                <p>• <a href="https://wwnorton.com/books/9780393345063" target="_blank" rel="noopener">Joseph Stiglitz: O Preço da Desigualdade (W. W. Norton, 2012) ↗</a></p>
+                <p>• <a href="https://us.macmillan.com/books/9780374533656/whatmoneycantbuy" target="_blank" rel="noopener">Michael Sandel: O Que o Dinheiro Não Compra — Os Limites Morais do Mercado (2012) ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Social-Democracia -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Social-Democracia — Igualdade com Liberdade</h3>
+                <p class="card-desc"><em>"Mercado eficiente, Estado justo."</em> Corrente política e socioeconômica que busca conciliar a dinâmica da economia de mercado com forte intervenção pública democrática para assegurar justiça distributiva, dignidade humana e proteção social universal.</p>
+                <div class="card-examples">
+                    <strong>📍 Exemplos:</strong> Modelo nórdico (Suécia, Dinamarca, Noruega), Alemanha (economia social de mercado) e constituições sociais do pós-guerra.
+                </div>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ Pilares e Forças</h4>
+                <ul>
+                    <li><strong>Equilíbrio entre Liberdade e Bem-Estar:</strong> Sustenta que a verdadeira liberdade individual requer condições materiais básicas garantidas: ninguém é livre se estiver em desespero social.</li>
+                    <li><strong>Serviços Universais Não Mercantis:</strong> Garantia estatal de saúde pública universal (ex: SUS, NHS), educação gratuita de qualidade, aposentadorias públicas e seguro-desemprego.</li>
+                    <li><strong>Justiça Fiscal e Coesão:</strong> Tributação progressiva e diálogo social entre sindicatos, empresas e Estado para reduzir as disparidades de renda e amortecer crises.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ Limites e Desafios</h4>
+                <ul>
+                    <li><strong>Carga Tributária e Competitividade:</strong> A sustentação de serviços universais exige tributação elevada, o que pode gerar atritos de competitividade e custos elevados para o setor produtivo.</li>
+                    <li><strong>Burocracia e Corporativismo:</strong> A expansão contínua da máquina estatal acarreta riscos de ineficiência burocrática, lentidão decisória e captura por corporações públicas.</li>
+                    <li><strong>Transição Demográfica:</strong> O envelhecimento populacional acelerado impõe severas pressões fiscais de longo prazo sobre a sustentabilidade da previdência e da saúde pública.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.cambridge.org/core/books/three-worlds-of-welfare-capitalism/44917C7FBC80D8F102CE2BEE8788CF86" target="_blank" rel="noopener">Gøsta Esping-Andersen: The Three Worlds of Welfare Capitalism (1990) ↗</a></p>
+                <p>• <a href="https://global.oup.com/academic/product/the-primacy-of-politics-9780521521109" target="_blank" rel="noopener">Sheri Berman: The Primacy of Politics: Social Democracy in Europe (Cambridge, 2006) ↗</a></p>
+                <p>• <a href="https://www.oecd.org/social/expenditure.htm" target="_blank" rel="noopener">OCDE: Social Expenditure Database (SOCX) ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Darwinismo Social -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Darwinismo Social (Doutrina Histórica)</h3>
+                <p class="card-desc">Teoria sociopolítica formulada no final do século XIX (associada a Herbert Spencer e William Graham Sumner) que transpunha de forma distorcida conceitos biológicos da seleção natural para as sociedades humanas, justificando desigualdades como "naturais".</p>
+                <div class="card-examples">
+                    <strong>📍 Contexto Histórico:</strong> Imperialismo do século XIX, movimentos eugenistas do início do século XX e justificativas ideológicas de hierarquização social.
+                </div>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendiam (segundo seus formuladores históricos)</h4>
+                <ul>
+                    <li>A competição irrestrita entre indivíduos e grupos sociais como o principal propulsor do "aperfeiçoamento" e progresso da civilização.</li>
+                    <li>A premissa de que a pobreza, a doença e o fracasso econômico seriam reflexos da inaptidão individual perante a luta pela existência.</li>
+                    <li>A oposição sistemática a intervenções estatais de amparo social, vistas por teóricos como Spencer como "interferência prejudicial" na seleção natural.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam (Consenso Científico e Ético)</h4>
+                <ul>
+                    <li><strong>Rejeição Científica Absoluta:</strong> A biologia moderna, a genética populacional e a antropologia rejeitam completamente o determinismo biológico. A cooperação, a empatia e a cultura coletiva são fundamentais na evolução humana (Gould, 1981; Kropotkin, 1902).</li>
+                    <li><strong>Legado Desumanizador:</strong> Serviu de alicerce ideológico para a eugenia, o racismo científico e as atrocidades totalitárias do século XX, culminando no nazismo e no Holocausto.</li>
+                    <li><strong>Princípio Ético Inegociável:</strong> Viola frontalmente a Carta da ONU (1945) e a Declaração Universal dos Direitos Humanos (1948), que estabelecem que todos os seres humanos nascem livres e iguais em dignidade e direitos.</li>
+                    <li><strong>Alerta Contemporâneo:</strong> Historiadores e sociólogos (Hawkins, 1997) alertam para a persistência de retóricas veladas que buscam naturalizar disparidades socioeconômicas ou desumanizar populações vulneráveis e migrantes, diferenciando essa crítica dos debates legítimos sobre modelos de assistência pública.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.cambridge.org/core/books/social-darwinism-in-european-and-american-thought-18601945/4FE06FAFA1A36DAE92EE780A4ED66436" target="_blank" rel="noopener">Mike Hawkins: Social Darwinism in European and American Thought, 1860–1945 (Cambridge, 1997) ↗</a></p>
+                <p>• Stephen Jay Gould: <em>The Mismeasure of Man</em> (W. W. Norton, 1981 / A Falsa Medida do Homem)</p>
+                <p>• <a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" target="_blank" rel="noopener">Declaração Universal dos Direitos Humanos da ONU (1948) ↗</a></p>
+                <p>• <a href="https://www.un.org/en/beyond-gdp" target="_blank" rel="noopener">ONU: Counting What Counts — A Compass of Progress for People and Planet (2026) ↗</a></p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- GRUPO 2 -->
+    <section id="sec-g2" class="page-section">
+        <h2 class="group-title">Grupo 2: <span>Modelos de Países</span></h2>
+        <div class="cards-grid">
+        <!-- China -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>China (Socialismo de Mercado)</h3>
+                <p class="card-desc">Estado dirigido pelo Partido Comunista, combinando mercado, grandes empresas estatais e forte planejamento ("socialismo com características chinesas").</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Segundo o Banco Mundial, desde 1978 o crescimento do PIB teve média acima de 9% ao ano e quase 800 milhões de pessoas saíram da pobreza extrema.</li>
+                    <li>Estudo conjunto do Banco Mundial e do Conselho de Estado da China afirma que a velocidade e a escala dessa redução da pobreza não têm precedentes históricos.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>A Freedom House classifica a China como "não livre", citando repressão à dissidência e às liberdades civis.</li>
+                    <li>Analistas afirmam que a linha de pobreza extrema usada nessas contas é muito baixa e não mostra a situação de quem continua pobre por critérios mais altos.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.worldbank.org/en/country/china/overview" target="_blank" rel="noopener">Banco Mundial: Contexto e Indicadores da China ↗</a></p>
+                <p>• <a href="https://www.worldbank.org/en/country/china/publication/four-decades-of-poverty-reduction-in-china" target="_blank" rel="noopener">Banco Mundial & Conselho de Estado: Four Decades of Poverty Reduction (2022) ↗</a></p>
+                <p>• <a href="https://freedomhouse.org/country/china/freedom-world" target="_blank" rel="noopener">Freedom House: Relatório Freedom in the World (China) ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Rússia -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Rússia (Capitalismo de Estado)</h3>
+                <p class="card-desc">Economia de mercado em que o Estado e grandes grupos ligados a ele dominam setores estratégicos, com forte dependência da exportação de petróleo e gás.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>O governo destaca a soberania em setores estratégicos, a estabilidade macroeconômica e a recuperação do país depois da crise dos anos 1990.</li>
+                    <li>O modelo inclui uma política fiscal e monetária conservadora para garantir estabilidade.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Anders Åslund descreve um "capitalismo de compadrio", no qual as rendas da energia ficam concentradas em círculos próximos ao poder, gerando estagnação.</li>
+                    <li>A Freedom House classifica a Rússia como "não livre".</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://yalebooks.yale.edu/book/9780300251838/russias-crony-capitalism/" target="_blank" rel="noopener">Anders Åslund: Russia's Crony Capitalism (Yale University Press, 2019) ↗</a></p>
+                <p>• <a href="https://freedomhouse.org/country/russia/freedom-world" target="_blank" rel="noopener">Freedom House: Relatório Freedom in the World (Rússia) ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Países Nórdicos -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Países Nórdicos (Modelo Nórdico)</h3>
+                <p class="card-desc">Economias de mercado abertas e competitivas, combinadas com um forte Estado de bem-estar, serviços públicos universais e impostos elevados.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Segurança social, saúde e educação universais, alta confiança entre as pessoas e baixa desigualdade.</li>
+                    <li>Descritos como um Estado de bem-estar ampliado dentro de uma economia de mercado bem-sucedida.</li>
+                    <li>Costumam aparecer entre os primeiros em rankings de felicidade e de desenvolvimento humano.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Há críticos do modelo até na Dinamarca, questionando a sustentabilidade fiscal a longo prazo.</li>
+                    <li>A classificação é discutida: chamar o modelo de "socialista" é um erro, pois é uma economia de mercado; para outros, o que ele faz na prática se alinha ao socialismo democrático.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://worldhappiness.report/" target="_blank" rel="noopener">World Happiness Report: Rankings Oficiais Globais ↗</a></p>
+                <p>• <a href="https://hdr.undp.org/data-center/human-development-index#/indicies/HDI" target="_blank" rel="noopener">PNUD: Relatório e Base de Dados do IDH ↗</a></p>
+                <p>• <a href="https://cphpost.dk/" target="_blank" rel="noopener">The Copenhagen Post: 'No socialists under mattress' (2015) ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Japão -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Japão</h3>
+                <p class="card-desc">Economia de mercado avançada com ética de relações. <em>Sanpo yoshi</em> ("bom para quem compra, vende e a sociedade") e <em>ikigai</em> (busca de sentido).</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Alta longevidade, segurança comunitária e valores que buscam equilibrar lucro, sociedade e propósito de vida.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>O governo é obrigado por lei a publicar um Livro Branco sobre mortes e adoecimento por excesso de trabalho (<em>karoshi</em>). Pedidos de indenização por problemas de saúde mental ligados ao trabalho atingiram recordes recentes.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.mhlw.go.jp/english/" target="_blank" rel="noopener">Ministério da Saúde do Japão (MHLW): Livro Branco sobre Karoshi ↗</a></p>
+                <p>• <a href="https://www.japantimes.co.jp/" target="_blank" rel="noopener">The Japan Times: Cobertura Especial sobre Saúde Mental no Trabalho ↗</a></p>
+                <p>• Mieko Kamiya: <em>Ikigai-ni-tsuite</em> (Sobre o Sentido de Viver, 1966)</p>
+            </div>
+        </div>
+
+        <!-- Costa Rica -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Costa Rica</h3>
+                <p class="card-desc">Democracia que aboliu o exército em 1948 e investiu em saúde e educação, com uma matriz elétrica quase toda renovável.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Cerca de 99% da eletricidade vem de fontes renováveis e cerca de 25% do território é área protegida.</li>
+                    <li>Já esteve no topo do Happy Planet Index em algumas edições.</li>
+                    <li>A OCDE reconhece o progresso econômico, com expectativa de vida no nível médio da organização e saúde quase universal.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>A OCDE aponta informalidade em torno de 45%, desemprego alto e um sistema tributário que pouco reduz a desigualdade.</li>
+                    <li>Especialistas criticam o Happy Planet Index por não considerar educação, renda, acesso à água e taxa de pobreza.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.oecd.org/en/publications/oecd-economic-surveys-costa-rica_23097566.html" target="_blank" rel="noopener">OCDE: OECD Economic Surveys Costa Rica ↗</a></p>
+                <p>• <a href="https://happyplanetindex.org/countries/costa-rica/" target="_blank" rel="noopener">Happy Planet Index: Perfil e Dados da Costa Rica ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Estados Unidos -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Estados Unidos (Capitalismo Liberal)</h3>
+                <p class="card-desc">Maior economia do planeta, fortemente alicerçada na livre iniciativa, pioneirismo tecnológico, dinamismo financeiro e mercado de trabalho altamente flexível.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Liderança indiscutível em inovação de ponta, inteligência artificial, biotecnologia, universidades de excelência e atração de talentos globais.</li>
+                    <li>Elevadíssimo poder de compra e PIB per capita (superior a US$ 80 mil), impulsionado pela alta produtividade, escala continental e cultura de empreendedorismo.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Desigualdade e vulnerabilidade social: Joseph Stiglitz analisa a acentuada concentração de riqueza no topo e o enfraquecimento histórico da classe média.</li>
+                    <li>Saúde e longevidade: Ausência de sistema de saúde universal gratuito, custos médicos per capita mais altos do mundo e o fenômeno documentado por Anne Case e Angus Deaton das "mortes por desespero", afetando a expectativa de vida média.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://press.princeton.edu/books/hardcover/9780691190785/deaths-of-despair-and-the-future-of-capitalism" target="_blank" rel="noopener">Anne Case & Angus Deaton: Deaths of Despair and the Future of Capitalism (Princeton, 2020) ↗</a></p>
+                <p>• <a href="https://wwnorton.com/books/9780393345063" target="_blank" rel="noopener">Joseph Stiglitz: O Preço da Desigualdade (W. W. Norton, 2012) ↗</a></p>
+                <p>• <a href="https://www.census.gov/topics/income-poverty.html" target="_blank" rel="noopener">US Census Bureau: Relatórios Nacionais de Renda, Pobreza e Saúde ↗</a></p>
+                <p>• <a href="https://www.bea.gov/" target="_blank" rel="noopener">U.S. Bureau of Economic Analysis (BEA): Dados Oficiais do PIB Americano ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Israel -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Israel (Modelo Híbrido: Inovação e Comunitarismo)</h3>
+                <p class="card-desc">Um caso único de coexistência de filosofias opostas: uma economia de mercado altamente inovadora e capitalista ("Start-up Nation") convive historicamente com comunidades comunitárias (Kibbutzim), baseadas na propriedade coletiva e na partilha de recursos.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>A capacidade de gerar riqueza, inovação tecnológica e resiliência econômica em um ambiente de mercado livre e competitivo.</li>
+                    <li>O modelo dos Kibbutzim como um experimento bem-sucedido de coesão social, igualdade radical e apoio mútuo, onde as necessidades básicas de todos são atendidas pela comunidade, alinhando-se a ideais de bem-estar coletivo.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>A crescente desigualdade interna e a erosão do modelo comunitário original, com muitos Kibbutzim tendo se privatizado e adotado estruturas de mercado nas últimas décadas.</li>
+                    <li>A profunda divisão socioeconômica e cultural entre os centros urbanos secularizados e ricos (ex: Tel Aviv) e as populações periféricas, incluindo comunidades árabes e ultraortodoxas, que frequentemente apresentam índices de pobreza mais altos.</li>
+                    <li>O impacto do conflito geopolítico contínuo na coesão social e na alocação de recursos, desviando investimentos do bem-estar social para a segurança, afetando os indicadores de paz e direitos humanos.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.worldbank.org/en/country/israel" target="_blank" rel="noopener">Banco Mundial, <em>Israel Overview</em> (dados econômicos e de desenvolvimento) ↗</a></p>
+                <p>• Levi, H. & Levi-Faur, D. (2011). "The Kibbutz: A Unique Experiment in Communal Living and its Evolution"</p>
+                <p>• <a href="https://hdr.undp.org/" target="_blank" rel="noopener">Relatórios do PNUD e da ONU sobre desenvolvimento humano, desigualdades e direitos humanos na região ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Butão -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Butão (Felicidade Interna Bruta - FIB)</h3>
+                <p class="card-desc">Reino nos Himalaias pioneiro mundial na substituição oficial do PIB pela Felicidade Interna Bruta (FIB), estruturada em quatro pilares: desenvolvimento socioeconômico sustentável, preservação cultural, conservação ecológica e boa governança.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Pioneirismo inspirador acolhido pela ONU (Resolução 65/309), comprovando que o bem-estar holístico, comunitário e espiritual pode orientar metas de Estado.</li>
+                    <li>Um dos três países do mundo com balanço de carbono formalmente negativo (ao lado de Suriname e Panamá), com mais de 70% do território coberto por florestas nativas e preservação ambiental assegurada em sua Constituição.</li>
+                    <li>Sistemas de saúde e educação públicos gratuitos e universais, priorizando a estabilidade coletiva sobre o consumismo industrial predatório.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Dependência econômica crônica de cooperação internacional (notadamente da Índia no setor hidrelétrico) e escassez de empregos qualificados, provocando êxodo juvenil.</li>
+                    <li>Histórico controverso de assimilação forçada e expulsão de milhares de cidadãos de etnia nepalesa (Lhotshampa) no início dos anos 1990 em nome da preservação da identidade cultural nacional.</li>
+                    <li>Dificuldades logísticas e orçamentárias para manter a modernização digital e infraestrutura de ponta sem afrouxar restrições ecológicas e turísticas.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.bhutancouncil.org/" target="_blank" rel="noopener">Centre for Bhutan & GNH Studies: Pesquisas e Metodologia Oficial da FIB ↗</a></p>
+                <p>• <a href="https://digitallibrary.un.org/record/711200" target="_blank" rel="noopener">Assembleia Geral da ONU: Resolução 65/309 — "Felicidade: rumo a uma abordagem holística do desenvolvimento" ↗</a></p>
+                <p>• <a href="https://www.worldbank.org/en/country/bhutan" target="_blank" rel="noopener">Banco Mundial: Bhutan Development Reports ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Singapura -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Singapura (Pragmatismo Tecnocriático e Habitação Social)</h3>
+                <p class="card-desc">Cidade-Estado insular que transitou do subdesenvolvimento à vanguarda financeira global em uma geração, combinando livre mercado agressivo com forte intervencionismo de Estado e planejamento habitacional universal.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>O modelo pioneiro do <em>Housing & Development Board</em> (HDB), onde mais de 75% da população é proprietária de moradias públicas de alta qualidade financiadas e mantidas pelo Estado.</li>
+                    <li>Governança meritocrática ultraeficiente, altos investimentos em ciência e biotecnologia, e tolerância quase zero à corrupção (líder recorrente nos índices globais).</li>
+                    <li>Sistemas de transporte público, segurança cidadã e educação pública consistentemente avaliados entre os mais eficientes e bem classificados do planeta.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Controle estatal rigoroso sobre liberdades civis, sindicais, manifestações públicas e meios de comunicação independentes.</li>
+                    <li>Forte disparidade de direitos e vulnerabilidade vivenciada por centenas de milhares de trabalhadores migrantes temporários sem acesso à cidadania.</li>
+                    <li>Cultura de cobrança extrema de performance acadêmica e corporativa ("Kiasu"), acompanhada de altos índices de ansiedade, pressão social e um dos custos de vida mais caros do mundo.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.hdb.gov.sg/" target="_blank" rel="noopener">Housing & Development Board (HDB): Histórico e Dados da Habitação Pública de Singapura ↗</a></p>
+                <p>• Kishore Mahbubani: <em>Can Asians Think? Understanding the Divide Between East and West</em> (2002)</p>
+                <p>• <a href="https://www.transparency.org/en/cpi" target="_blank" rel="noopener">Transparência Internacional: Corruption Perceptions Index (Singapura) ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Nova Zelândia -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Nova Zelândia (Orçamento do Bem-Estar e Tutela Māori)</h3>
+                <p class="card-desc">Democracia parlamentar da Oceania pioneira em aprovar formalmente em 2019 o "Wellbeing Budget", subordinando gastos fiscais a indicadores de bem-estar social, saúde mental e ao conceito indígena Māori de tutela ecológica (*Kaitiakitanga*).</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Aplicação do <em>Living Standards Framework</em>, que avalia capitais humano, social, natural e financeiro antes de deliberar recursos públicos, rompendo a primazia exclusiva do PIB.</li>
+                    <li>Vanguarda jurídica mundial ao outorgar personalidade e direitos jurídicos a ecossistemas sagrados (como o Rio Whanganui e a floresta Te Urewera).</li>
+                    <li>Instituições democráticas de máxima transparência, coesão comunitária e políticas ativas de inclusão e respeito à diversidade cultural nativa.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Grave e crônica crise de acessibilidade à moradia, com inflação imobiliária que encarece o custo de vida de jovens e famílias de baixa renda.</li>
+                    <li>Desigualdades sociais e de saúde históricas que ainda impactam de forma desproporcional as comunidades Māori e das ilhas do Pacífico.</li>
+                    <li>Desafios complexos de mensuração e acomodação de metas de bem-estar social junto aos setores produtivos e à dependência agropecuária intensiva de exportação.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.treasury.govt.nz/information-and-services/nz-economy/higher-living-standards/our-living-standards-framework" target="_blank" rel="noopener">New Zealand Treasury: The Living Standards Framework (LSF) & Wellbeing Budget ↗</a></p>
+                <p>• Anne Salmond: <em>Tears of Rangi: Experiments Across Worlds</em> (Auckland University Press, 2017)</p>
+                <p>• <a href="https://www.oecd.org/en/publications/oecd-economic-surveys-new-zealand_19990715.html" target="_blank" rel="noopener">OCDE: OECD Economic Surveys: New Zealand ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Cuba -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇨🇺 Cuba (Socialismo Real em Resistência)</h3>
+                <p class="card-desc">Estado socialista de partido único, sob embargo econômico dos EUA há mais de seis décadas, com forte centralização estatal.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Saúde e educação universais e gratuitas, com indicadores de expectativa de vida e alfabetização comparáveis a países desenvolvidos.</li>
+                    <li>Soberania nacional e resistência anti-imperialista frente às pressões dos Estados Unidos.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Restrições severas à liberdade de expressão, ausência de pluripartidarismo e perseguição a dissidentes políticos.</li>
+                    <li>Estagnação econômica crônica, escassez de bens básicos e êxodo em massa de cidadãos.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://hdr.undp.org/" target="_blank" rel="noopener">PNUD, Relatórios de Desenvolvimento Humano (Cuba) ↗</a></p>
+                <p>• <a href="https://www.amnesty.org/" target="_blank" rel="noopener">Relatórios da Anistia Internacional e Human Rights Watch sobre direitos civis ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Venezuela -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇻🇪 Venezuela (Socialismo do Século XXI)</h3>
+                <p class="card-desc">Modelo bolivariano baseado na retórica anti-imperialista, nacionalização do petróleo e "missões" sociais, atualmente em colapso institucional.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Participação popular via conselhos comunais e soberania sobre recursos naturais (petróleo).</li>
+                    <li>Programas sociais (Misiones) que, no auge, reduziram drasticamente a pobreza extrema.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Hiperinflação, destruição do aparato produtivo e colapso dos serviços públicos (saúde, energia).</li>
+                    <li>Autoritarismo chavista/madurista e crise humanitária que gerou mais de 7 milhões de refugiados.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.cepal.org/" target="_blank" rel="noopener">CEPAL, Relatórios sobre a economia latino-americana ↗</a></p>
+                <p>• <a href="https://www.acnur.org/" target="_blank" rel="noopener">ACNUR, Dados sobre o êxodo venezuelano ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Coreia do Sul -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇰🇷 Coreia do Sul (Desenvolvimentismo Democrático)</h3>
+                <p class="card-desc">O "Milagre do Rio Han": de país devastado pela guerra a potência tecnológica global, movido por conglomerados familiares (Chaebols).</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Inovação tecnológica acelerada, infraestrutura de ponta e influência cultural global (Hallyu).</li>
+                    <li>Democracia consolidada com alta participação cívica e digital.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Pressão social extrema, longas jornadas de trabalho e uma das taxas de suicídio mais altas da OCDE.</li>
+                    <li>Desigualdade de gênero persistente e domínio econômico dos Chaebols sobre o Estado.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.oecd.org/" target="_blank" rel="noopener">OCDE, Relatórios sobre trabalho e bem-estar ↗</a></p>
+                <p>• <a href="https://www.worldbank.org/" target="_blank" rel="noopener">Banco Mundial, Dados de desenvolvimento tecnológico ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Ruanda -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇷🇼 Ruanda (Autoritarismo Desenvolvista)</h3>
+                <p class="card-desc">Reconstrução pós-genocídio de 1994 sob o governo de Paul Kagame, focada em tecnologia, limpeza urbana e empoderamento feminino formal.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Crescimento econômico acelerado, segurança pública e maior porcentagem de mulheres no parlamento do mundo.</li>
+                    <li>Visão de hub tecnológico e de negócios da África Oriental.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Governo autoritário com repressão severa à oposição política e à liberdade de imprensa.</li>
+                    <li>"Desenvolvimento de vitrine" que esconde tensões étnicas e violações de direitos humanos.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.worldbank.org/" target="_blank" rel="noopener">Banco Mundial, Relatórios de crescimento econômico ↗</a></p>
+                <p>• <a href="https://www.amnesty.org/" target="_blank" rel="noopener">Anistia Internacional, Relatórios sobre direitos políticos ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Noruega -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇳🇴 Noruega (Capitalismo com Fundo Soberano)</h3>
+                <p class="card-desc">Social-democracia nórdica com o maior Fundo Soberano do mundo, gerido para beneficiar as gerações futuras.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Gestão de recursos naturais (petróleo) para o bem coletivo, alta confiança social, solidez institucional e democracia representativa (monarquia parlamentarista com ampla participação cívica).</li>
+                    <li>Transição energética e forte estado de bem-estar social.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Contradição climática: riqueza histórica baseada na extração de petróleo e gás.</li>
+                    <li>Custo de vida extremamente alto e desafios recentes de integração de imigrantes.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.nbim.no/" target="_blank" rel="noopener">Government Pension Fund Global (Relatórios anuais) ↗</a></p>
+                <p>• <a href="https://www.oecd.org/" target="_blank" rel="noopener">OCDE, Estatísticas de bem-estar e meio ambiente ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Suíça -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇨🇭 Suíça (Neutralidade e Democracia Direta)</h3>
+                <p class="card-desc">Confederação neutra, famosa por seu sistema de referendos frequentes, federalismo forte e setor bancário.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Participação cidadã direta nas decisões políticas, estabilidade institucional e inovação (ex: CERN).</li>
+                    <li>Alta qualidade de vida e descentralização do poder.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Conservadorismo social histórico (mulheres só obtiveram direito ao voto federal em 1971).</li>
+                    <li>Xenofobia em ascensão e custo de vida proibitivo para classes baixas.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.bk.admin.ch/" target="_blank" rel="noopener">Chancelaria Federal Suíça, Dados de democracia direta ↗</a></p>
+                <p>• <a href="https://www.weforum.org/" target="_blank" rel="noopener">Fórum Econômico Mundial, Relatórios de competitividade ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Índia -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇮🇳 Índia (Democracia Desigual)</h3>
+                <p class="card-desc">A maior democracia do mundo, com diversidade cultural extrema, potência em TI e raízes filosóficas no Dharma e Ahimsa (não-violência).</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Resiliência democrática, diversidade religiosa/cultural e liderança global em farmacêutica e tecnologia.</li>
+                    <li>Tradições de tolerância e movimentos de direitos civis (herança de Gandhi).</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Desigualdade abissal, persistência do sistema de castas e pobreza extrema.</li>
+                    <li>Ascensão do nacionalismo hindu (Hindutva) e violência contra minorias (muçulmanos, dalits).</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://hdr.undp.org/" target="_blank" rel="noopener">PNUD, Relatórios sobre desigualdade e desenvolvimento ↗</a></p>
+                <p>• <a href="https://freedomhouse.org/" target="_blank" rel="noopener">Freedom House, Relatórios sobre democracia e minorias ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Emirados Árabes Unidos -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇦🇪 Emirados Árabes Unidos (Petro-Capitalismo Autoritário)</h3>
+                <p class="card-desc">Monarquia federal rica em petróleo, focada em diversificação econômica, turismo de luxo e infraestrutura de ponta (Dubai/Abu Dhabi).</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Tolerância religiosa relativa para a região, segurança pública e atração de investimentos globais.</li>
+                    <li>Projetos de "cidades sustentáveis" (ex: Masdar) e transição tecnológica.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Sistema Kafala: trabalho migrante em condições análogas à escravidão, sem direitos sindicais.</li>
+                    <li>Ausência total de democracia, vigilância estatal e contradição climática (dependência do petróleo).</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.ilo.org/" target="_blank" rel="noopener">OIT, Relatórios sobre o sistema Kafala e trabalho migrante ↗</a></p>
+                <p>• <a href="https://www.hrw.org/" target="_blank" rel="noopener">Human Rights Watch, Condições de trabalho nos EAU ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Uruguai -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇺🇾 Uruguai (Progressismo Latino-Americano)</h3>
+                <p class="card-desc">Conhecido como a "Suíça da América do Sul", destaca-se por estabilidade democrática, políticas de direitos humanos e energia limpa.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Segundo país da América Latina a legalizar o casamento homoafetivo (em 2013, após a Argentina em 2010), pioneirismo na regulação da cannabis e transição para uma matriz elétrica com cerca de 90% a 98% de fontes renováveis (hidrelétrica, eólica, biomassa e solar).</li>
+                    <li>Forte estado de bem-estar social, elevada coesão cívica e respeito às liberdades civis.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Economia pequena e dependente de commodities (soja, carne), vulnerável a crises externas.</li>
+                    <li>Envelhecimento populacional e desigualdade entre a capital (Montevidéu) e o interior.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.worldbank.org/" target="_blank" rel="noopener">Banco Mundial, Dados de energia renovável ↗</a></p>
+                <p>• <a href="https://www.un.org/" target="_blank" rel="noopener">ONU, Relatórios sobre direitos civis na América Latina ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Bolívia -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇧🇴 Bolívia (Plurinacionalidade Indígena)</h3>
+                <p class="card-desc">Estado Plurinacional que constitucionalizou o "Vivir Bien" e reconhece 36 nações indígenas, com forte presença estatal na economia.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Constituição de 2009 que garante direitos coletivos indígenas e nacionalização de recursos (gás, lítio).</li>
+                    <li>Redução histórica da pobreza extrema e inclusão política de povos originários.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Tensão entre o discurso ecológico e a dependência do extrativismo (mineração, gás).</li>
+                    <li>Instabilidade política e polarização entre o oriente (agroexportador) e o occidente (indígena/andino).</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Constituição Política do Estado Plurinacional da Bolívia (2009)</p>
+                <p>• <a href="https://www.cepal.org/" target="_blank" rel="noopener">CEPAL, Análises sobre o modelo econômico boliviano ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Equador -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>🇪🇨 Equador (Sumak Kawsay Constitucional)</h3>
+                <p class="card-desc">Primeiro país do mundo a reconhecer os "Direitos da Natureza" (Pachamama) em sua constituição, incorporando o Bem Viver andino.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Inovação jurídica global: a Natureza como sujeito de direitos, não como objeto de exploração.</li>
+                    <li>Proteção da Amazônia e iniciativas como o Yasuní-ITT (não explorar petróleo em troca de compensação global).</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Contradição prática: o Estado continua dependente da exploração de petróleo e mineração para financiar políticas sociais.</li>
+                    <li>Instabilidade política recente e desafios de segurança pública.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• Constituição do Equador (2008) - Artigos 71 a 74 (Direitos da Natureza)</p>
+                <p>• <a href="https://autonomialiteraria.com.br/" target="_blank" rel="noopener">Acosta, A. "O Bem Viver: uma oportunidade para imaginar outros mundos" (2016) ↗</a></p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- GRUPO 3 -->
+    <section id="sec-g3" class="page-section">
+        <h2 class="group-title">Grupo 3: <span>Filosofias de Vida</span></h2>
+        <p class="group-subtitle">Cada política pública não nasce do nada, ela carrega uma visão de ser humano, de sociedade e de mundo. Aqui estão as principais filosofias que guiam governos, leis e economias hoje:</p>
+        <div class="cards-grid">
+        <!-- Ubuntu -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Ubuntu (África Austral)</h3>
+                <p class="card-desc">Filosofia relacional resumida em "eu sou porque nós somos": a pessoa se realiza nas relações com os outros, com ênfase na dignidade e reconciliação.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Desmond Tutu usou o ubuntu para pensar a reconciliação na África do Sul pós-apartheid.</li>
+                    <li>O filósofo Thaddeus Metz defende que o ubuntu pode ser tratado como uma teoria moral séria e que sua aplicação política está apenas começando.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ O que criticam</h4>
+                <ul>
+                    <li>Bernard Matolino e Wenceslaus Kwindingwi (2013) argumentam que a promoção do ubuntu na África do Sul pós-apartheid é um projeto de elites e que seus ideais seriam adequados a uma época pré-moderna.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://doi.org/10.1080/02580136.2013.817637" target="_blank" rel="noopener">B. Matolino & W. Kwindingwi: The End of Ubuntu (South African Journal of Philosophy, 2013) [DOI: 10.1080/02580136.2013.817637] ↗</a></p>
+                <p>• <a href="https://doi.org/10.1080/02580136.2014.892680" target="_blank" rel="noopener">Thaddeus Metz: Just the Beginning for Ubuntu (South African Journal of Philosophy, 2014) [DOI: 10.1080/02580136.2014.892680] ↗</a></p>
+                <p>• <a href="https://www.penguinrandomhouse.com/books/181057/no-future-without-forgiveness-by-desmond-tutu/" target="_blank" rel="noopener">Desmond Tutu: No Future Without Forgiveness (1999) ↗</a></p>
+            </div>
+        </div>
+
+        <!-- Sumak Kawsay -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Bem Viver / Buen Vivir (Sumak Kawsay) — Vida em Harmonia</h3>
+                <p class="card-desc"><em>"Não se trata de ter mais, mas de viver bem, juntos e com a natureza."</em> Expressão quíchua e cosmovisão originária dos Andes e da América Latina, centrada na convivência harmônica entre as pessoas e a Pachamama (Mãe Terra).</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem (Pilares e Forças)</h4>
+                <ul>
+                    <li><strong>Raiz e Cosmovisão:</strong> Saberes ancestrais dos povos originários que desafiam a lógica do crescimento infinito, colocando a vida comunitária, a solidariedade e o equilíbrio ecológico no centro das decisões.</li>
+                    <li><strong>Natureza como Sujeito de Direitos:</strong> Inspirou as Constituições do Equador (2008) e da Bolívia (2009), pioneiras em reconhecer juridicamente a natureza como sujeito de direitos e na promoção de um modelo de desenvolvimento que não destrói o planeta.</li>
+                    <li><strong>Além do Crescimento:</strong> Alberto Acosta propõe o Bem Viver como uma oportunidade transformadora para imaginar outros mundos possíveis, desvinculando o bem-estar da mera acumulação material.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ Limites e Debates</h4>
+                <ul>
+                    <li><strong>Desafios de Escala:</strong> Dificuldade prática de implementação em economias muito grandes e industrializadas; não possui um modelo único ou receita pré-fabricada.</li>
+                    <li><strong>Tensão Desenvolvimentista:</strong> Andreu Viola Recasens (2014) analisa o dilema real entre o discurso "pachamamista" e a continuidade de políticas extrativistas para financiar programas sociais nos governos andinos.</li>
+                    <li><strong>Seis Debates Abertos:</strong> Hidalgo-Capitán e Cubillo-Guevara (2014) mostram debates sobre tradução, apropriação política e a relação entre correntes indigenistas, pós-coloniais e socialistas.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://autonomialiteraria.com.br/" target="_blank" rel="noopener">Alberto Acosta: O Bem Viver — Uma oportunidade para imaginar outros mundos (2016) ↗</a></p>
+                <p>• <a href="https://doi.org/10.17141/iconos.48.2014.1204" target="_blank" rel="noopener">Hidalgo-Capitán & Cubillo-Guevara: Seis debates abiertos sobre el sumak kawsay (Íconos, 2014) [DOI: 10.17141/iconos.48.2014.1204] ↗</a></p>
+                <p>• <a href="https://doi.org/10.17141/iconos.48.2014.1209" target="_blank" rel="noopener">Andreu Viola Recasens: Discursos 'pachamamistas' vs políticas desarrollistas (Íconos, 2014) [DOI: 10.17141/iconos.48.2014.1209] ↗</a></p>
+                <p>• Constituição da República do Equador (2008) — Reconhecimento dos Direitos da Natureza</p>
+            </div>
+        </div>
+
+        <!-- Teko Porã -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Teko Porã (Povo Guarani)</h3>
+                <p class="card-desc">Expressa um "bom modo de ser e um bom estado de vida". Está ligada ao território (<em>tekoha</em>): sem o lugar onde viver, falta o modo de ser.</p>
+            </div>
+            <div class="card-section">
+                <h4 class="h-defend">✓ O que defendem</h4>
+                <ul>
+                    <li>Xavier Albó descreve o bem viver dos Guarani e a importância da terra e da autoridade de baixo perfil nas comunidades.</li>
+                    <li>Margot Bremer apresenta o Teko Porã como o caminho das belas palavras do povo Guarani e como resistência ancestral.</li>
+                </ul>
+            </div>
+            <div class="card-section">
+                <h4 class="h-critic">⚠ Desafios e cuidados</h4>
+                <ul>
+                    <li>Estudos observam que Teko Porã costuma ser traduzido depressa por "bem viver" e confundido com "viver bem" no sentido de acumulação, mas expressa o sentido Mbya Guarani de uma forma boa e bela de existir no território.</li>
+                    <li>Trata-se da dificuldade de praticar esse modo de ser em tempos sombrios e de pressão sobre os territórios tradicionais.</li>
+                </ul>
+            </div>
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.ihu.unisinos.br/categorias/186-noticias-2015/543666-os-guarani-e-seu-bem-viver" target="_blank" rel="noopener">Xavier Albó: Os Guarani e seu Bem Viver (IHU Unisinos, 2015) ↗</a></p>
+                <p>• <a href="https://doi.org/10.1590/0103-6564e180070" target="_blank" rel="noopener">Souza, Gonzalez & Guimarães: Luta e resistência: dimensões para a promoção de saúde Mbya Guarani (Psicologia USP, 2020) [DOI: 10.1590/0103-6564e180070] ↗</a></p>
+                <p>• Margot Bremer: Teko Porã e o caminho das belas palavras (IHU, 2024)</p>
+                <p>• Bartomeu Melià: Teko porã — formas do bom viver guarani, memória e futuro</p>
+            </div>
+        </div>
+
+        <!-- Consumismo, Individualismo e Sociedade do Cansaço -->
+        <div class="philosophy-card">
+            <div class="card-header">
+                <h3>Consumismo, Individualismo e Sociedade do Cansaço</h3>
+                <p class="card-desc">Filosofia de vida e padrão existencial hegemônico nas sociedades capitalistas avançadas, onde a realização e o valor do indivíduo são medidos pela capacidade de consumo, hiperprodutividade, acúmulo material e desempenho pessoal.</p>
+            </div>
+            
+            <div class="card-section">
+                <h4 class="h-defend">✓ Forças e Apelo Cotidiano</h4>
+                <ul>
+                    <li><strong>Autonomia de Escolha e Estilo de Vida:</strong> Ampla liberdade individual de escolha no mercado de bens, experiências e serviços como expressão da subjetividade pessoal.</li>
+                    <li><strong>Estímulo à Superação e Meritocracia:</strong> A narrativa de que o empenho, o talento e a dedicação individuais conduzem diretamente ao reconhecimento social e à prosperidade material.</li>
+                    <li><strong>Dinamismo e Conforto Material:</strong> Contínuo avanço em conveniências cotidianas, inovações de consumo e conectividade global que elevam os padrões de conforto físico.</li>
+                </ul>
+            </div>
+            
+            <div class="card-section">
+                <h4 class="h-critic">⚠ Limites e Consequências Humanas</h4>
+                <ul>
+                    <li><strong>Mercantilização da Existência:</strong> Como diagnostica Zygmunt Bauman (2008), os próprios seres humanos são transformados em mercadorias a serem avaliadas pela atratividade no mercado.</li>
+                    <li><strong>Saúde Mental e Autoexploração:</strong> Byung-Chul Han (2015) descreve a transição da sociedade disciplinar para a sociedade do desempenho, gerando depressão, burnout, sensação crônica de insuficiência e esgotamento.</li>
+                    <li><strong>Erosão dos Laços Coletivos:</strong> A primazia do sucesso individual e da hipercompetitividade enfraquece a solidariedade comunitária e aprofunda o isolamento e a solidão nas grandes cidades.</li>
+                    <li><strong>Crise Socioecológica:</strong> A busca contínua por obsolescência programada e consumo incessante colide diretamente com os limites biofísicos do planeta (Relatório <em>Counting What Counts</em>, ONU, 2026).</li>
+                </ul>
+            </div>
+            
+            <div class="sources-list">
+                <h4 class="h-sources">📚 Fontes e leituras</h4>
+                <p>• <a href="https://www.zahar.com.br/" target="_blank" rel="noopener">Zygmunt Bauman: Vida para Consumo — A transformação das pessoas em mercadoria (Zahar, 2008) ↗</a></p>
+                <p>• <a href="https://editoravozes.com.br/" target="_blank" rel="noopener">Byung-Chul Han: Sociedade do Cansaço (Vozes, 2015) ↗</a></p>
+                <p>• Delbó, A. & Leal, G. F.: "Filosofia Política no Brasil: Uma Confrontação Tardia?" (Revista Estudos Libertários, 2020)</p>
+                <p>• <a href="https://www.un.org/en/beyond-gdp" target="_blank" rel="noopener">ONU: Counting What Counts — A Compass of Progress for People and Planet (2026) ↗</a></p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- SEÇÃO: O CENÁRIO BRASILEIRO -->
+    <section id="sec-brasil" class="page-section brazil-context-section" style="margin: 60px 0;">
+        <h2 class="group-title">🇧🇷 O Cenário Brasileiro: <span>Entre a Norma e a Realidade</span></h2>
+        
+        <div class="info-box" style="margin-bottom: 30px;">
+            <p style="font-size: 1.1em; color: var(--text);">
+                Formalmente, o sistema político, econômico e filosófico vigente no Brasil é o <strong>capitalismo democrático sob uma república presidencialista</strong>, fundamentado no liberalismo político-econômico e na social-democracia, conforme consolidado na Constituição de 1988. No entanto, a prática revela um complexo confronto de ideologias e contradições estruturais.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Card 1: Estrutura Formal -->
+            <div class="philosophy-card">
+                <div class="card-header">
+                    <h3>🗳️ A Estrutura Formal</h3>
+                </div>
+                <div class="card-section">
+                    <h4 class="h-defend">Sistema Político</h4>
+                    <ul>
+                        <li><strong>Democracia Representativa:</strong> Poder exercido por representantes eleitos via voto direto, secreto e obrigatório.</li>
+                        <li><strong>Separação de Poderes:</strong> Executivo, Legislativo e Judiciário independentes e harmônicos.</li>
+                        <li><strong>Pluralismo Político:</strong> Livre associação e multiplicidade partidária.</li>
+                    </ul>
+                </div>
+                <div class="card-section">
+                    <h4 class="h-defend">Sistema Econômico</h4>
+                    <ul>
+                        <li><strong>Economia Mista:</strong> Livre iniciativa e propriedade privada como motores, com concorrência de mercado.</li>
+                        <li><strong>Intervenção Estatal:</strong> O Estado atua como regulador (ANATEL, BACEN, etc.) e garante serviços básicos para corrigir distorções.</li>
+                    </ul>
+                </div>
+                <div class="card-section">
+                    <h4 class="h-defend">Base Filosófica (CF/88)</h4>
+                    <ul>
+                        <li><strong>Liberalismo Político:</strong> Liberdades individuais, direitos humanos e igualdade perante a lei.</li>
+                        <li><strong>Social-Democracia:</strong> O "Estado Democrático de Direito" busca equilibrar o capitalismo com justiça social, redução de desigualdades e garantia de direitos trabalhistas e previdenciários.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: A Crítica do "Estranho Capitalismo" -->
+            <div class="philosophy-card">
+                <div class="card-header">
+                    <h3>🦆 O "Estranho Capitalismo" Brasileiro</h3>
+                </div>
+                <div class="card-section">
+                    <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 15px;">
+                        Conforme analisado pelo sociólogo <strong>Francisco de Oliveira</strong> (USP), o Brasil opera como um "ornitorrinco": um híbrido contraditório que combina estruturas modernas de capitalismo financeiro com arcaísmos patrimonialistas, clientelismo e uma desigualdade social estrutural que o mercado, por si só, não corrige.
+                    </p>
+                    <h4 class="h-critic">O Confronto Ideológico (Lynch, Dados, 2025)</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95em;">
+                        Em estudo seminal publicado na <em>Dados – Revista de Ciências Sociais</em> (2025), o cientista político Christian Lynch mapeia 10 correntes que disputam a hegemonia no pensamento político brasileiro (como o cosmopolitismo liberal, nacionalismo cívico, socialismo democrático, conservadorismo societário e reacionarismo). A promessa social-democrática da Constituição de 1988 está em atrito contínuo com interesses oligárquicos tradicionais e forças de mercado desreguladas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3: A Crítica Biopolítica -->
+            <div class="philosophy-card">
+                <div class="card-header">
+                    <h3>⚠️ A Fratura Biopolítica e Necropolítica</h3>
+                </div>
+                <div class="card-section">
+                    <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 15px;">
+                        Na prática, a promessa de universalidade dos direitos esbarra em uma divisão cruel. Como apontam análises contemporâneas da filosofia política no Brasil (inspiradas em Foucault e Agamben), o sistema opera uma lógica de <strong>"fazer viver e deixar morrer"</strong>.
+                    </p>
+                    <ul>
+                        <li><strong>O Privilégio do Isolamento:</strong> A capacidade de exercer direitos (como a proteção durante crises sanitárias ou econômicas) tornou-se um privilégio de classe. "Ficar em casa" é uma opção para alguns, enquanto para outros é a sentença de fome.</li>
+                        <li><strong>Esvaziamento do Espaço Público:</strong> A política perde espaço para a gestão emergencial da sobrevivência. O espaço público, antes local de disputa democrática, é marcado pela repressão ou pelo abandono daqueles que não têm onde se proteger.</li>
+                        <li><strong>A Falácia da Meritocracia:</strong> Aprofunda o abismo entre quem parte de uma linha de chegada avançada e quem luta apenas pela sobrevivência básica, invalidando a promessa liberal de "igualdade de oportunidades".</li>
+                    </ul>
+                </div>
+                <div class="sources-list">
+                    <h4 class="h-sources">📚 Fontes e Leituras</h4>
+                    <p>• Constituição da República Federativa do Brasil (1988)</p>
+                    <p>• Lynch, C. E. C.: "Ideologias do Pensamento Político Brasileiro", <em>Dados – Revista de Ciências Sociais</em> (2025) ↗</p>
+                    <p>• Delbó, A. & Leal, G. F.: "Filosofia Política no Brasil: Uma Confrontação Tardia?", <em>Revista Estudos Libertários</em> (UFRJ, 2020) ↗</p>
+                    <p>• Oliveira, F. de. <a href="https://jornal.usp.br/cultura/chico-de-oliveira-explicou-o-estranho-capitalismo-brasileiro/" target="_blank" rel="noopener" style="color: var(--accent);">"Chico de Oliveira explicou o estranho capitalismo brasileiro" (Jornal da USP) ↗</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: AS MUTAÇÕES DA DOMINAÇÃO -->
+    <section id="sec-mutacoes" class="page-section mutations-section" style="margin: 60px 0;">
+        <h2 class="group-title">⚠️ As Mutações da Dominação: <span>O Passado que não Passou</span></h2>
+        <p style="text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px auto; font-size: 1.05em;">
+            Embora a história formal tenha declarado o fim de certos sistemas, suas lógicas de exclusão e dominação se metamorfosearam. Elas continuam operando, muitas vezes invisíveis aos olhos do PIB, mas sentidas na pele por quem está na base da pirâmide.
+        </p>
+
+        <div class="mutations-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+            
+            <!-- 1. DITADURA -->
+            <div class="mutation-card">
+                <div class="mutation-header">
+                    <span class="mutation-icon">👑</span>
+                    <h3>Ditadura</h3>
+                </div>
+                <div class="mutation-body">
+                    <p class="formally"><strong>Formalmente:</strong> Existem ditaduras clássicas e absolutas (ex: Coreia do Norte, Eritreia), onde o poder é concentrado sem qualquer fachada democrática.</p>
+                    <p class="mutation"><strong>A Mutação Contemporânea:</strong> O que mais cresce no mundo (e no Brasil) não é a ditadura militar clássica, mas o <em>"Autoritarismo Competitivo"</em> ou <em>"Democracia Iliberal"</em>. São regimes que mantêm eleições, mas destroem as instituições de controle (Judiciário, imprensa), manipulam a informação e usam o Estado para perseguir opositores. É a ditadura com "roupagem" democrática, tornando-a mais perigosa e difícil de combater.</p>
+                    <div class="source-tag">📚 Baseado em: Lynch (Dados, 2025) sobre fragilidades democráticas e a erosão do Estado de Direito.</div>
+                </div>
+            </div>
+
+            <!-- 2. FEUDALISMO -->
+            <div class="mutation-card">
+                <div class="mutation-header">
+                    <span class="mutation-icon">🏰</span>
+                    <h3>Feudalismo</h3>
+                </div>
+                <div class="mutation-body">
+                    <p class="formally"><strong>Formalmente:</strong> O feudalismo medieval (suserania, vassalagem, servidão da gleba) acabou com a ascensão do Estado-nação e do capitalismo.</p>
+                    <p class="mutation"><strong>A Mutação Contemporânea:</strong> Vivemos um <em>Neo-Feudalismo</em>. No mundo, a concentração extrema de riqueza nas mãos de "senhores" da tecnologia, onde usuários geram valor sem possuir nada. No Brasil, persistem o patrimonialismo, o coronelismo e o clientelismo. A concentração fundiária (latifúndios) e a dependência de trabalhadores rurais ou periféricos em relação a "patrões" é uma herança feudal viva.</p>
+                    <div class="source-tag">📚 Baseado em: Lynch (Dados, 2025) sobre a persistência do conservadorismo societário e estruturas oligárquicas no Brasil.</div>
+                </div>
+            </div>
+
+            <!-- 3. MERCANTILISMO -->
+            <div class="mutation-card">
+                <div class="mutation-header">
+                    <span class="mutation-icon">⚓</span>
+                    <h3>Mercantilismo</h3>
+                </div>
+                <div class="mutation-body">
+                    <p class="formally"><strong>Formalmente:</strong> O mercantilismo clássico (séc. XVI-XVIII), baseado no acúmulo de metais preciosos e monopólios coloniais, foi substituído pelo liberalismo e pelo capitalismo global.</p>
+                    <p class="mutation"><strong>A Mutação Contemporânea:</strong> O <em>Neo-Mercantilismo Geopolítico</em> está em alta. Países praticam um "Capitalismo de Estado" onde o governo controla setores estratégicos para ganhar poder geopolítico, não apenas lucro. Vemos o retorno de barreiras protecionistas, guerras comerciais e o uso de sanções econômicas e do dólar como armas de guerra, quebrando a ilusão de um "livre mercado" harmonioso.</p>
+                    <div class="source-tag">📚 Alinhado ao relatório da ONU "Counting What Counts" (2026) sobre spillovers globais e limites do PIB.</div>
+                </div>
+            </div>
+
+            <!-- 4. ESCRAVATURA -->
+            <div class="mutation-card">
+                <div class="mutation-header">
+                    <span class="mutation-icon">⛓️</span>
+                    <h3>Escravatura</h3>
+                </div>
+                <div class="mutation-body">
+                    <p class="formally"><strong>Formalmente:</strong> A escravidão <em>chattel</em> (propriedade legal de um ser humano) foi abolida em quase todo o mundo.</p>
+                    <p class="mutation"><strong>A Mutação Contemporânea:</strong> A Escravidão Moderna é uma realidade brutal. A OIT estima mais de 50 milhões de pessoas nessa condição (trabalho forçado, servidão por dívida, trabalho infantil). Isso se conecta diretamente à <em>Necropolítica</em>: quando o Estado "deixa morrer" ou abandona certas populações à miséria extrema, ele cria o caldo de cultura perfeito para que sejam cooptadas para o trabalho análogo à escravidão. É a face mais cruel da biopolítica que "deixa morrer" quem não é considerado "rentável".</p>
+                    <div class="source-tag">📚 Baseado em: Delbó & Leal (2020) sobre Biopolítica/Necropolítica e o abandono estatal no Brasil.</div>
+                </div>
+            </div>
+
+            <!-- 5. TEOPATRIARCADO -->
+            <div class="mutation-card">
+                <div class="mutation-header">
+                    <span class="mutation-icon">⛪</span>
+                    <h3>Teopatriarcado</h3>
+                </div>
+                <div class="mutation-body">
+                    <p class="formally"><strong>Formalmente:</strong> A escravidão legal, a mutilação genital e a imposição religiosa foram abolidas ou condenadas pela Declaração Universal dos Direitos Humanos (1948) e por convenções da ONU.</p>
+                    <p class="mutation"><strong>A Mutação Contemporânea:</strong> Regimes teocráticos e patriarcais extremos mantêm mulheres como propriedade dos maridos (Afeganistão sob o Talibã), impõem mutilação genital feminina (FGM) em mais de 30 países — afetando mais de 200 milhões de mulheres e meninas segundo a OMS —, apedrejamento de mulheres e gays, chibatadas públicas e conversão religiosa forçada sob pena de morte. É a <em>biopolítica</em> levada ao extremo: o Estado controla literalmente os corpos, especialmente os corpos femininos, dissidentes e LGBTQIA+. A Carta da ONU (Art. 18) garante liberdade de consciência, mas em teocracias como Irã, Arábia Saudita e Afeganistão, a apostasia é punida com morte.</p>
+                    <div class="source-tag">📚 Baseado em: Relatórios da ONU sobre Liberdade Religiosa (2024), OMS sobre FGM, e Delbó & Leal (2020) sobre biopolítica e necropolítica no Brasil.</div>
+                </div>
+            </div>
+
+            <!-- 6. NECRO-SOBERANIAS -->
+            <div class="mutation-card">
+                <div class="mutation-header">
+                    <span class="mutation-icon">💀</span>
+                    <h3>Necro-Soberanias (Zonas Sem Lei)</h3>
+                </div>
+                <div class="mutation-body">
+                    <p class="formally"><strong>Formalmente:</strong> O monopólio legítimo da violência pertence ao Estado (Max Weber). A Carta da ONU (Art. 2) garante soberania territorial e proteção aos cidadãos.</p>
+                    <p class="mutation"><strong>A Mutação Contemporânea:</strong> Em "Zonas Sem Lei" (<em>Lawless Zones</em>), o Estado colapsou e o poder é exercido por gangues, cartéis e milícias. <strong>Porto Príncipe (Haiti):</strong> 80% da cidade controlada por coalizões de gangues que cobram pedágios e usam estupro como arma de guerra. <strong>Leste da RDC:</strong> Mais de 120 grupos rebeldes controlam minas de coltan com trabalho forçado e massacres. <strong>Triângulo Dourado (Mianmar):</strong> Tráfico humano industrial em "fazendas de cibercrime". <strong>Zonas de Cartéis no México:</strong> Governos paralelos que cobram impostos e impõem toques de recolher. <strong>Fronteira Afeganistão-Paquistão:</strong> Códigos tribais de vingança substituem tribunais. É a <em>necropolítica</em> de Achille Mbembe em sua forma mais pura: quem vive e quem morre é decidido por senhores da guerra, não por leis.</p>
+                    <div class="source-tag">📚 Baseado em: Relatórios do Conselho de Segurança da ONU, ACLED (Armed Conflict Location & Event Data Project), e Mbembe (2003) sobre necropolítica.</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CONCLUSÃO DA SEÇÃO -->
+        <div class="mutation-conclusion" style="background: rgba(231, 76, 60, 0.1); border-left: 4px solid #e74c3c; padding: 25px; border-radius: 0 12px 12px 0; margin-top: 30px;">
+            <p style="color: var(--text); font-size: 1.1em; line-height: 1.6; margin: 0;">
+                <strong>💡 O Papel do Bem Viver:</strong> O Bem Viver não é apenas uma alternativa econômica ou um conjunto de indicadores. É um <strong>projeto de exorcismo</strong> dessas lógicas herdadas. Ele propõe a soberania sobre o próprio corpo, o território e o tempo, em oposição frontal a qualquer forma de neo-servidão, garantindo que ninguém seja tratado como "descartável" pelo sistema.
+            </p>
+        </div>
+    </section>
+
+    <style>
+        /* Estilos específicos para a seção de Mutações */
+        .mutations-grid {
+            margin-bottom: 20px;
+        }
+        .mutation-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .mutation-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--warning);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .mutation-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+        .mutation-icon {
+            font-size: 1.8em;
+        }
+        .mutation-header h3 {
+            color: var(--accent);
+            font-size: 1.3em;
+            margin: 0;
+        }
+        .mutation-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .formally {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .mutation {
+            color: var(--text);
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+        .source-tag {
+            font-size: 0.8em;
+            color: var(--accent);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: auto;
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .mutations-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <!-- SEÇÃO: REALIDADES CRÍTICAS (O CONTRASTE NECESSÁRIO) -->
+    <section id="sec-rupturas" class="page-section critical-realities-section" style="margin: 80px 0;">
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+            <h2 style="color: var(--danger); font-size: 2em; margin-bottom: 15px;">⚠️ Contextos de Ruptura e Vulnerabilidade Extrema</h2>
+            <p style="color: var(--text); font-size: 1.05em; max-width: 900px; margin: 0 auto; line-height: 1.7;">
+                Esta seleção editorial não estabelece uma hierarquização simplista ou moralista de sociedades de "melhor a pior". Trata-se de um mapeamento fundamentado nos tratados internacionais de direitos humanos (ONU, ACNUR, OIT) e relatórios de observatórios multilaterais para identificar contextos onde salvaguardas essenciais à integridade da vida, liberdade civil e dignidade foram rompidas, servindo como alerta contra a naturalização de retrocessos.
+            </p>
+        </div>
+
+        <div class="realities-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+            
+            <!-- Card 1: Colapso Institucional -->
+            <div class="reality-card">
+                <div class="card-icon">🏛️</div>
+                <h3>O Colapso do Contrato Social</h3>
+                <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 15px;">
+                    Nações onde a fragmentação política impede uma convivência pacífica e institucionalizada, sob regimes de exceção, violência ou tribalismo armado.
+                </p>
+                <ul style="color: var(--text); font-size: 0.9em; padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Afeganistão & Iêmen:</strong> Teocracias autocráticas e estados fragmentados por conflitos armados crônicos.</li>
+                    <li><strong>Coreia do Norte:</strong> Ditadura totalitária dinástica moldada pela doutrina <em>Juche</em>, com vigilância e controle absoluto da sociedade.</li>
+                    <li><strong>Sahel (Níger, Mali, Chade):</strong> Juntas militares de exceção, avanço de insurgências armadas e severa crise climática e alimentar.</li>
+                </ul>
+            </div>
+
+            <!-- Card 2: Mulheres -->
+            <div class="reality-card">
+                <div class="card-icon">👩🏽</div>
+                <h3>Graves Violações contra Mulheres</h3>
+                <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 15px;">
+                    Segundo o <em>Women, Peace and Security Index</em> (GIWPS/PRIO), os cenários de maior vulnerabilidade conjugam exclusão legal absoluta, violência institucionalizada e conflito armado.
+                </p>
+                <ul style="color: var(--text); font-size: 0.9em; padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Afeganistão:</strong> Apartheid de gênero institucionalizado pelo Talibã (proibição legal de educação secundária/universitária e trabalho para mulheres).</li>
+                    <li><strong>R.D. do Congo, Sudão e Síria:</strong> Uso sistemático da violência sexual como arma e tática de guerra em conflitos armados prolongados.</li>
+                    <li><strong>Iêmen, Sudão do Sul e Haiti:</strong> Casamento infantil forçado, carência obstétrica absoluta e insegurança urbana e sanitária extrema.</li>
+                </ul>
+            </div>
+
+            <!-- Card 3: LGBTQIA+ -->
+            <div class="reality-card">
+                <div class="card-icon">🏳️‍🌈</div>
+                <h3>Perseguição à Diversidade Sexual</h3>
+                <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 15px;">
+                    Conforme dados da ILGA World, cerca de 60 a 70 jurisdições ainda criminalizam relações consensuais entre pessoas do mesmo sexo.
+                </p>
+                <ul style="color: var(--text); font-size: 0.9em; padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Pena de Morte em Lei:</strong> Irã, Iêmen, Arábia Saudita, Afeganistão e províncias do norte da Nigéria e Somália.</li>
+                    <li><strong>Prisão Severa e Novas Leis:</strong> Uganda (Lei Anti-Homossexualidade de 2023, prevendo pena capital para atos agravados e prisão perpétua), Iraque e Gana.</li>
+                    <li><strong>Censura e Perseguição Estatal:</strong> Rússia (designação de organizações de defesa de direitos LGBT como "extremistas" e perseguição documentada na Tchetchênia).</li>
+                </ul>
+            </div>
+
+            <!-- Card 4: Liberdade Religiosa -->
+            <div class="reality-card">
+                <div class="card-icon">🕊️</div>
+                <h3>Restrições à Liberdade de Crença e Consciência</h3>
+                <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 15px;">
+                    Segundo relatórios do Relator Especial da ONU sobre Liberdade Religiosa e do Pew Research Center, restrições extremas provêm de controle estatal ou de hostilidade social violenta.
+                </p>
+                <ul style="color: var(--text); font-size: 0.9em; padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Controle e Repressão Estatal:</strong> Coreia do Norte (proibição absoluta de culto independente), China (política de sinicização compulsória e vigilância sobre uigures muçulmanos e cristãos não registrados) e Eritreia (reconhecimento restrito a quatro denominações oficiais e encarceramento prolongado de fiéis de grupos não autorizados).</li>
+                    <li><strong>Teocracias e Apostasia:</strong> Irã, Arábia Saudita e Afeganistão (a renúncia à fé oficial ou conversão religiosa é tipificada como crime capital).</li>
+                    <li><strong>Leis de Blasfêmia e Intolerância Social:</strong> Paquistão (leis de blasfêmia rigorosas que ensejam pena de morte e violência por linchamento) e Nigéria (códigos religiosos regionais).</li>
+                    <li><strong>Nacionalismo Religioso Excludente:</strong> Índia (tensões sociopolíticas e episódios de violência intercomunitária decorrentes do nacionalismo hindu/Hindutva contra minorias muçulmanas e cristãs).</li>
+                </ul>
+            </div>
+
+            <!-- Card 5: Violência Econômica (Moradia) -->
+            <div class="reality-card">
+                <div class="card-icon">🏠</div>
+                <h3>Crise Global da Moradia e Inacessibilidade</h3>
+                <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 15px;">
+                    O direito à moradia adequada (Art. 25 da DUDH) é erodido por crises cambiais severas ou pela especulação imobiliária global.
+                </p>
+                <ul style="color: var(--text); font-size: 0.9em; padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Volatilidade e Inflação Crônica:</strong> Turquia (inflação de dois dígitos severa e persistente, corrosiva de rendimentos reais), Argentina (déficit crônico de crédito hipotecário acessível) e Nepal.</li>
+                    <li><strong>Inacessibilidade Severa de Mercado:</strong> Conforme o levantamento anual <em>Demographia International Housing Affordability</em> (2023/2024), metrópoles como Hong Kong, Sydney, Vancouver, Honolulu e cidades da Costa Oeste dos EUA exigem mais de 9 a 12 vezes a renda familiar anual mediana para compra de um imóvel, excluindo populações jovens e vulneráveis.</li>
+                </ul>
+            </div>
+
+            <!-- Card 6: Soberania Violada -->
+            <div class="reality-card">
+                <div class="card-icon">⚔️</div>
+                <h3>Soberania Violada: Ocupações e Conflitos Armados</h3>
+                <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 15px;">
+                    Conforme dados e resoluções do Secretariado-Geral da ONU, ACNUR e OCHA, populações civis são tragicamente afetadas pela quebra da integridade territorial e conflitos armados:
+                </p>
+                <ul style="color: var(--text); font-size: 0.9em; padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Territórios Palestinos Ocupados:</strong> Segundo relatórios da Assembleia Geral da ONU e agências humanitárias (OCHA, UNRWA), décadas de ocupação militar, bloqueio prolongado de Gaza, destruição de infraestruturas vitais, perdas civis maciças e negação histórica do direito à autodeterminação.</li>
+                    <li><strong>Ucrânia:</strong> Conforme resoluções da Assembleia Geral da ONU (ex: ES-11/1), a invasão em larga escala pela Federação Russa, com flagrante violação da Carta da ONU, destruição maciça de infraestrutura civil e o maior fluxo de refugiados na Europa desde a Segunda Guerra.</li>
+                    <li><strong>Síria e Iêmen:</strong> Conflitos armados de alta intensidade com interferência de atores regionais e globais, gerando catástrofes humanitárias persistentes, fome e deslocamentos em massa.</li>
+                    <li><strong>Regimes de Sanções Coercitivas:</strong> Segundo relatores especiais da ONU sobre medidas coercitivas unilaterais, sanções abrangentes (como em Cuba, Síria e Irã) impactam severamente a aquisição de insumos médicos básicos, peças hospitalares e a segurança alimentar das populações civis.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Caixa de Conclusão da Seção -->
+        <div class="conclusion-box" style="background: rgba(212, 175, 55, 0.1); border-left: 4px solid var(--accent); padding: 25px; border-radius: 0 12px 12px 0; margin-top: 40px;">
+            <p style="color: var(--text); font-size: 1.05em; line-height: 1.7; margin: 0;">
+                <strong>💡 Por que mapear estes contextos?</strong><br>
+                Compreender esses cenários fundamenta a necessidade de balizas éticas globais baseadas em <strong>direitos inegociáveis</strong>. O relatório da ONU <em>Counting What Counts: A Compass of Progress for People and Planet</em> (2026) define Paz, Direitos Humanos e Respeito aos Limites Planetários como pré-condições fundacionais indispensáveis. O paradigma do "Bem Viver" emerge precisamente como antítese à mercantilização predatória da vida e à negação da dignidade humana.
+            </p>
+        </div>
+    </section>
+
+    <style>
+        /* Estilos específicos para a seção de Realidades Críticas */
+        .critical-realities-section {
+            padding: 20px;
+        }
+        .reality-card {
+            background: rgba(231, 76, 60, 0.05); /* Fundo levemente avermelhado para indicar alerta */
+            border: 1px solid rgba(231, 76, 60, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .reality-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--danger);
+            background: rgba(231, 76, 60, 0.1);
+        }
+        .card-icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        .reality-card h3 {
+            color: var(--danger);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 768px) {
+            .realities-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <!-- SEÇÃO: O COMPASSO DO PAÍS IDEAL -->
+    <section id="sec-compasso" class="page-section compass-section">
+    <style>
+        .compass-title {
+            text-align: center;
+            margin: 60px auto 25px auto;
+        }
+        .compass-title h2 {
+            color: var(--accent);
+            font-size: 2em;
+            margin-bottom: 12px;
+        }
+        .compass-title p {
+            color: var(--text-muted);
+            max-width: 820px;
+            margin: 0 auto;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        /* Seletor de visualização (Cartões vs Tabela) */
+        .compass-view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 25px 0 35px 0;
+        }
+        .btn-view-toggle {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 1px solid var(--border-gold);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.88em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-view-toggle:hover {
+            color: #fff;
+            border-color: var(--gold);
+        }
+        .btn-view-toggle.active {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.28), rgba(212, 175, 55, 0.1));
+            border-color: var(--gold);
+            color: #fff;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* GRID DE CARDS DAS DIMENSÕES (Ideal para celular e desktop) */
+        .compass-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .compass-dim-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .compass-dim-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-gold);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--gold-glow);
+        }
+
+        .dim-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 12px;
+        }
+
+        .dim-badge-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dim-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            font-size: 0.85em;
+            font-weight: 700;
+        }
+
+        .dim-name {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.02em;
+        }
+
+        .dim-target-pill {
+            font-size: 0.78em;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.35);
+            color: #86efac;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .dim-line {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .dim-label {
+            display: block;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gold-light);
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .dim-leader-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: #bae6fd;
+            font-weight: 600;
+            font-size: 0.88em;
+            margin-top: 4px;
+        }
+
+        .dim-philosophy-box {
+            background: rgba(0, 0, 0, 0.25);
+            border-left: 3px solid var(--gold);
+            padding: 10px 14px;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.5;
+            margin-top: auto;
+        }
+
+        /* Container da Tabela (Visão Alternativa) */
+        .compass-table-wrapper {
+            margin: 20px 0;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            overflow-x: auto;
+            position: relative;
+            backdrop-filter: blur(12px);
+            display: none; /* Ativado via botão */
+        }
+
+        .compass-table-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+        .compass-table-wrapper::-webkit-scrollbar-track {
+            background: rgba(10, 15, 29, 0.9);
+            border-radius: 0 0 16px 16px;
+        }
+        .compass-table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .compass-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+            font-family: inherit;
+        }
+
+        .compass-table thead th {
+            background: rgba(15, 23, 42, 0.95);
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.8rem;
+            padding: 18px 14px;
+            text-align: left;
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .compass-table tbody td {
+            padding: 16px 14px;
+            color: var(--text);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.92rem;
+            line-height: 1.55;
+            vertical-align: top;
+        }
+
+        .compass-table tbody tr:hover td {
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .compass-table tbody td:first-child {
+            color: #fcd34d;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .compass-table tbody td:last-child {
+            color: var(--text-muted);
+            font-style: italic;
+            border-left: 2px solid rgba(212, 175, 55, 0.15);
+        }
+    </style>
+
+    <!-- TÍTULO DA SEÇÃO -->
+    <div class="compass-title">
+        <h2>🧭 O Compasso do País Ideal: O que aprendemos com o mundo</h2>
+        <p>Nenhum país é perfeito, mas cada um nos ensina um pedaço do caminho. Esta síntese reúne os melhores indicadores globais (baseados no relatório <em>Beyond GDP</em> da ONU, 2026) para desenhar como seria uma nação que verdadeiramente prioriza o Bem Viver.</p>
+    </div>
+
+    <!-- SELETOR DE MODO DE VISUALIZAÇÃO -->
+    <div class="compass-view-toggle">
+        <button id="btnCompassCards" class="btn-view-toggle active">🃏 Modo Cartões (Fácil Leitura)</button>
+        <button id="btnCompassTable" class="btn-view-toggle">📊 Modo Tabela Comparativa</button>
+    </div>
+
+    <!-- 1. VISÃO EM CARTÕES RESPONSIVOS (PADRÃO PARA CELULAR E DESKTOP) -->
+    <div id="compassCardsView" class="compass-cards-grid">
+        
+        <!-- Dimensão 1 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">01</span>
+                    <span class="dim-name">Paz</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: 0</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                Mortes relacionadas a conflitos por 100 mil hab.
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Islândia / Costa Rica</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 <strong>Paz Positiva (Carta da ONU):</strong> Não apenas ausência de guerra, mas presença de justiça e condições para florescer.
+            </div>
+        </div>
+
+        <!-- Dimensão 2 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">02</span>
+                    <span class="dim-name">Direitos Humanos</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: 0%</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                % da população que relatou discriminação ou assédio
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Nova Zelândia / Canadá</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 Respeito à dignidade inerente a todos, sem distinção de raça, gênero, origem ou credo.
+            </div>
+        </div>
+
+        <!-- Dimensão 3 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">03</span>
+                    <span class="dim-name">Respeito ao Planeta</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: Zero Líquido + Alto</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                Emissões de GEE per capita + Índice de Integridade da Biodiversidade
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Butão / Costa Rica</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 <strong>Pachamama / Teko Porã:</strong> A natureza não é mero recurso econômico; é sujeito de direitos e matriz da vida.
+            </div>
+        </div>
+
+        <!-- Dimensão 4 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">04</span>
+                    <span class="dim-name">Condições Materiais</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: Digna + Pleno Emprego</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                Renda disponível domiciliar per capita + Baixo subemprego
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Dinamarca / Suíça</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 Garantia de que ninguém precise escolher entre sobreviver e manter a dignidade humana.
+            </div>
+        </div>
+
+        <!-- Dimensão 5 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">05</span>
+                    <span class="dim-name">Saúde Integral</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: &gt; 75 anos</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                Expectativa de vida saudável ao nascer
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Japão / Coreia do Sul</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 Saúde como direito universal inalienável e cuidado integral preventivo, não como mercadoria.
+            </div>
+        </div>
+
+        <!-- Dimensão 6 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">06</span>
+                    <span class="dim-name">Educação Crítica</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: 100%</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                % de jovens com proficiência mínima + habilidades digitais
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Finlândia / Estônia</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 Educação para a autonomia, o pensamento reflexivo e a cidadania participativa.
+            </div>
+        </div>
+
+        <!-- Dimensão 7 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">07</span>
+                    <span class="dim-name">Segurança Cidadã</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: 0 mortes + &gt;80%</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                Homicídios intencionais por 100 mil + % que se sente seguro à noite
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Singapura / Japão</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 Segurança comunitária sem necropolítica: garantia de que ninguém seja abandonado à violência.
+            </div>
+        </div>
+
+        <!-- Dimensão 8 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">08</span>
+                    <span class="dim-name">Bem-Estar Subjetivo</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: &gt; 7.5 / 10</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                Satisfação com a vida (Escala Cantril de 0 a 10)
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Finlândia / Dinamarca</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 Reconhecimento de que o progresso é sentido e vivido na pele, não apenas em índices abstratos de PIB.
+            </div>
+        </div>
+
+        <!-- Dimensão 9 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">09</span>
+                    <span class="dim-name">Coesão Social</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: Alta Confiança</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                % de pessoas que confiam na maioria + Baixa solidão crônica
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Noruega / Países Baixos</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 <strong>Ubuntu:</strong> "Eu sou porque nós somos". Redes de apoio comunitário e pertencimento vivo.
+            </div>
+        </div>
+
+        <!-- Dimensão 10 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">10</span>
+                    <span class="dim-name">Instituições Justas</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: &gt; 80%</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                % satisfeita com a experiência em serviços públicos essenciais
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Uruguai / Estônia</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 Estado e instituições a serviço da sociedade, com transparência e combate rigoroso à corrupção.
+            </div>
+        </div>
+
+        <!-- Dimensão 11 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">11</span>
+                    <span class="dim-name">Equidade de Riqueza</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: &lt; 20% no 1% | Gini &lt; 0.25</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                Fração da riqueza retida pelo 1% mais rico + Coeficiente de Gini
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Eslovênia / Noruega</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 A riqueza deve circular e irrigar a sociedade com oportunidades, rejeitando a hiperconcentração.
+            </div>
+        </div>
+
+        <!-- Dimensão 12 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">12</span>
+                    <span class="dim-name">Inclusão no Trabalho</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: 100% (Paridade)</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                Rendimento horário médio das mulheres em relação aos homens
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Islândia / Bélgica</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 Equidade de gênero como premissa civilizatória fundacional, não como concessão tardia.
+            </div>
+        </div>
+
+        <!-- Dimensão 13 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">13</span>
+                    <span class="dim-name">Equidade Regional</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: 100%</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                % da população rural com acesso seguro a estradas e transportes
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Suíça / Áustria</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 O interior e a periferia não são descartáveis; a justiça territorial conecta todos os cidadãos.
+            </div>
+        </div>
+
+        <!-- Dimensão 14 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">14</span>
+                    <span class="dim-name">Capital Natural</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: Saldo Positivo</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                Ativos ecológicos (solo, florestas, bacias) contabilizados (SEEA)
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Butão / Nova Zelândia</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 <strong>Sumak Kawsay:</strong> Legar uma biosfera restaurada e rica para as próximas gerações.
+            </div>
+        </div>
+
+        <!-- Dimensão 15 -->
+        <div class="compass-dim-card">
+            <div class="dim-card-header">
+                <div class="dim-badge-wrap">
+                    <span class="dim-num">15</span>
+                    <span class="dim-name">Capital Social</span>
+                </div>
+                <span class="dim-target-pill">🎯 Meta: &gt; 60%</span>
+            </div>
+            <div class="dim-line">
+                <span class="dim-label">Indicador-Chave (ONU)</span>
+                % da população que declara confiança nas outras pessoas
+            </div>
+            <div>
+                <span class="dim-label">Quem mais se aproxima</span>
+                <span class="dim-leader-pill">📍 Dinamarca / Noruega</span>
+            </div>
+            <div class="dim-philosophy-box">
+                🌱 A confiança recíproca é a maior riqueza coletiva e a pedra angular de uma comunidade sustentável.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 2. VISÃO EM TABELA (DISPONÍVEL COMO MODO ALTERNATIVO) -->
+    <div id="compassTableView" class="compass-table-wrapper">
+        <table class="compass-table">
+            <thead>
+                <tr>
+                    <th>Dimensão do Bem Viver</th>
+                    <th>Indicador-Chave (ONU)</th>
+                    <th>O Valor "Ideal" (Meta)</th>
+                    <th>Quem mais se aproxima hoje?</th>
+                    <th>Conexão Filosófica / Decolonial</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1. PAZ</td>
+                    <td>Mortes relacionadas a conflitos por 100 mil hab.</td>
+                    <td><strong>0</strong></td>
+                    <td>Islândia / Costa Rica</td>
+                    <td>Paz positiva (Carta da ONU): não apenas ausência de guerra, mas presença de justiça e condições para florescer.</td>
+                </tr>
+                <tr>
+                    <td>2. DIREITOS HUMANOS</td>
+                    <td>% da população que relatou discriminação/assédio</td>
+                    <td><strong>0%</strong></td>
+                    <td>Nova Zelândia / Canadá</td>
+                    <td>Respeito à dignidade inerente a todos, sem distinção de raça, gênero, origem ou credo.</td>
+                </tr>
+                <tr>
+                    <td>3. RESPEITO AO PLANETA</td>
+                    <td>Emissões de GEE per capita + Índice de Integridade da Biodiversidade</td>
+                    <td><strong>Zero Líquido + Alto</strong></td>
+                    <td>Butão / Costa Rica</td>
+                    <td>Pachamama / Teko Porã: A natureza não é recurso, é sujeito de direitos e base da vida.</td>
+                </tr>
+                <tr>
+                    <td>4. CONDIÇÕES MATERIAIS</td>
+                    <td>Renda disponível domiciliar per capita + Baixo subemprego</td>
+                    <td><strong>Digna + Pleno Emprego</strong></td>
+                    <td>Dinamarca / Suíça</td>
+                    <td>Garantia de que ninguém precise escolher entre sobreviver e ter dignidade (rejeição da miséria absoluta).</td>
+                </tr>
+                <tr>
+                    <td>5. SAÚDE</td>
+                    <td>Expectativa de vida saudável ao nascer</td>
+                    <td><strong>&gt; 75 anos</strong></td>
+                    <td>Japão / Coreia do Sul</td>
+                    <td>Saúde como direito universal e cuidado integral, não como mercadoria.</td>
+                </tr>
+                <tr>
+                    <td>6. EDUCAÇÃO</td>
+                    <td>% de jovens com proficiência mínima + habilidades digitais</td>
+                    <td><strong>100%</strong></td>
+                    <td>Finlândia / Estônia</td>
+                    <td>Educação para a autonomia, o pensamento crítico e a cidadania, não apenas para o mercado.</td>
+                </tr>
+                <tr>
+                    <td>7. SEGURANÇA</td>
+                    <td>Homicídios intencionais por 100 mil + % que se sente seguro à noite</td>
+                    <td><strong>Próximo de 0 + &gt;80%</strong></td>
+                    <td>Singapura / Japão</td>
+                    <td>Segurança pública comunitária, sem militarização ou necropolítica (ninguém é "deixado para morrer").</td>
+                </tr>
+                <tr>
+                    <td>8. BEM-ESTAR SUBJETIVO</td>
+                    <td>Satisfação com a vida (Escala Cantril)</td>
+                    <td><strong>&gt; 7.5 / 10</strong></td>
+                    <td>Finlândia / Dinamarca</td>
+                    <td>Reconhecimento de que o progresso é sentido e vivido, não apenas contabilizado em planilhas.</td>
+                </tr>
+                <tr>
+                    <td>9. COESÃO SOCIAL</td>
+                    <td>% de pessoas que confiam na maioria + Baixa solidão</td>
+                    <td><strong>Alta Confiança + Baixa</strong></td>
+                    <td>Noruega / Países Baixos</td>
+                    <td>Ubuntu: "Eu sou porque nós somos". Redes de apoio fortes e senso de pertencimento.</td>
+                </tr>
+                <tr>
+                    <td>10. QUALIDADE DAS INSTITUIÇÕES</td>
+                    <td>% satisfeito com a última experiência de serviços públicos</td>
+                    <td><strong>&gt; 80%</strong></td>
+                    <td>Uruguai / Estônia</td>
+                    <td>Estado a serviço do cidadão, com transparência, eficiência e combate à corrupção.</td>
+                </tr>
+                <tr>
+                    <td>11. EQUIDADE DE RIQUEZA</td>
+                    <td>Participação na riqueza do 1% mais rico + Índice de Gini</td>
+                    <td><strong>&lt; 20% + Gini &lt; 0.25</strong></td>
+                    <td>Eslovênia / Noruega</td>
+                    <td>Rejeição da concentração de poder. A riqueza deve circular e servir ao bem comum, não se acumular no topo.</td>
+                </tr>
+                <tr>
+                    <td>12. INCLUSÃO NO TRABALHO</td>
+                    <td>Rendimentos horários médios das mulheres como % dos dos homens</td>
+                    <td><strong>100% (Paridade Total)</strong></td>
+                    <td>Islândia / Bélgica</td>
+                    <td>Justiça de gênero como pilar central, não como "tema secundário" ou retórica.</td>
+                </tr>
+                <tr>
+                    <td>13. EQUIDADE REGIONAL</td>
+                    <td>% da população rural a 2 km de uma estrada em todas as estações</td>
+                    <td><strong>100%</strong></td>
+                    <td>Suíça / Áustria</td>
+                    <td>O campo e a periferia não são "esquecidos". O desenvolvimento é territorialmente justo.</td>
+                </tr>
+                <tr>
+                    <td>14. CAPITAL NATURAL</td>
+                    <td>Ativos ambientais (terra, água, solo) contabilizados e preservados (SEEA)</td>
+                    <td><strong>Crescimento Líquido</strong></td>
+                    <td>Butão / Nova Zelândia</td>
+                    <td>Sumak Kawsay: Deixar um legado ecológico melhor para as futuras gerações, não uma dívida.</td>
+                </tr>
+                <tr>
+                    <td>15. CAPITAL SOCIAL</td>
+                    <td>% da população que diz que a maioria das pessoas pode ser confiável</td>
+                    <td><strong>&gt; 60%</strong></td>
+                    <td>Dinamarca / Noruega</td>
+                    <td>A confiança mútua é a moeda mais valiosa e o alicerce de uma sociedade verdadeiramente saudável.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Alternador de visualização (Cartões vs Tabela)
+        const btnCards = document.getElementById('btnCompassCards');
+        const btnTable = document.getElementById('btnCompassTable');
+        const cardsView = document.getElementById('compassCardsView');
+        const tableView = document.getElementById('compassTableView');
+
+        if (btnCards && btnTable && cardsView && tableView) {
+            btnCards.addEventListener('click', () => {
+                btnCards.classList.add('active');
+                btnTable.classList.remove('active');
+                cardsView.style.display = 'grid';
+                tableView.style.display = 'none';
+            });
+
+            btnTable.addEventListener('click', () => {
+                btnTable.classList.add('active');
+                btnCards.classList.remove('active');
+                cardsView.style.display = 'none';
+                tableView.style.display = 'block';
+            });
+        }
+    </script>
+    </section>
+
+    <!-- SEÇÃO DA SÍNTESE -->
+    <section id="sec-sintese" class="page-section synthesis-section">
+        <h2>🌿 A Síntese: Uma Proposta de Futuro, Bem Viver Bem</h2>
+        <p><em>Os quadros acima descrevem. A Síntese propõe.</em></p>
+        <p>A partir daqui, esta página apresenta uma proposta própria, inspirada nos quadros acima. É uma perspectiva, não um consenso.</p>
+        
+        <div class="synthesis-highlight">
+            <p>Reconhecendo que nenhum sistema humano é absoluto e que toda filosofia tem suas luzes e suas sombras, nenhuma filosofia ou sistema econômico e político isolado resolve tudo sozinho. O desafio de hoje é tecer:</p>
+            <p style="margin: 15px 0; font-weight: 600; color: var(--accent); font-size: 1.15em; text-align: center; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;">
+                Liberdade + Justiça + Cuidado com a Terra + Respeito aos Saberes Ancestrais + Desenvolvimento Humano + Bem-estar social
+            </p>
+            <p style="margin-top: 15px;">Uma política pública sábia não escolhe um extremo, ela ouve todas as vozes que fazem parte do todo. Todo cidadão tem direitos de cidadania, independente de fazer parte da maioria ou da minoria. Não se trata de "voltar ao passado" ou de abolir toda a tecnologia e o mercado. Trata-se de uma <strong>evolução sistêmica</strong>. O capitalismo é excelente em inovação e geração de recursos (o "motor"), mas ele precisa ser guiado pela bússola do Bem Viver e do Ubuntu, desenvolvendo a equidade, a sustentabilidade e os direitos humanos, promovendo o que podemos chamar de <strong>Bem Viver Bem</strong>.</p>
+            <p style="margin-top: 15px;">Um Sistema Social do <strong>Bem Viver Bem</strong> pode usar a eficiência do mercado, mas dentro de limites rígidos definidos pela sociedade e pela ecologia, medindo o progresso não apenas pelo PIB, mas pela saúde planetária, coesão social e dignidade humana, conforme recomendado pelo relatório <em>Counting What Counts: A Compass of Progress for People and Planet</em> (ONU Beyond GDP, 2026).</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- BARRA FLUTUANTE DE COMPARAÇÃO "VERSUS" -->
+<div id="versusBar" class="versus-bar">
+    <div class="versus-bar-text">
+        ⚔️ Comparando: <span id="versusCardName1">Modelo 1</span> vs <span id="versusCardName2">Modelo 2</span>
+    </div>
+    <button id="btnOpenVersus" class="btn-versus-open">Comparar Lado a Lado</button>
+    <button id="btnClearVersus" class="btn-versus-clear" title="Cancelar seleção">✕</button>
+</div>
+
+<!-- MODAL VERSUS (POPUP GLASSMORPHISM) -->
+<div id="versusModal" class="versus-modal">
+    <div class="versus-modal-card">
+        <button id="btnCloseVersus" class="versus-modal-close" title="Fechar">✕</button>
+        <div class="versus-modal-header">
+            <h2>⚔️ Confronto Direto • YBY VersuS</h2>
+            <p style="color: var(--text-muted); font-size: 0.95em;">Análise comparativa das visões de mundo, forças, contradições e fontes.</p>
+        </div>
+        <div id="versusModalContent" class="versus-columns">
+            <!-- Conteúdo gerado dinamicamente -->
+        </div>
+    </div>
+</div>
+
+<!-- MOTOR INTERATIVO JS (Tabs, Busca, Chips e Modo Versus) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. INICIALIZAR MINI-TABS E BOTÃO COMPARAR NOS CARDS
+    const cards = document.querySelectorAll('.philosophy-card');
+    let selectedForCompare = [];
+
+    cards.forEach((card, index) => {
+        // Atribuir ID único ao card se não tiver
+        const cardId = 'card-' + index;
+        card.setAttribute('data-card-id', cardId);
+
+        const header = card.querySelector('.card-header');
+        const titleEl = header ? header.querySelector('h3') : null;
+        const cardTitle = titleEl ? titleEl.textContent.trim() : 'Modelo ' + (index + 1);
+
+        // Inserir botão de Comparar no topo do header
+        if (header) {
+            const topAction = document.createElement('div');
+            topAction.className = 'card-top-action';
+            
+            // Mover h3 para dentro do topAction
+            if (titleEl) {
+                topAction.appendChild(titleEl);
+            }
+            
+            const btnCompare = document.createElement('button');
+            btnCompare.className = 'btn-card-compare';
+            btnCompare.innerHTML = '⚔️ <span>Comparar</span>';
+            btnCompare.title = 'Selecione 2 modelos para confrontar no modo Versus';
+            btnCompare.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleCompare(card, cardId, cardTitle, btnCompare);
+            });
+            topAction.appendChild(btnCompare);
+            
+            header.insertBefore(topAction, header.firstChild);
+        }
+
+        // Seções de conteúdo do card
+        const sections = card.querySelectorAll('.card-section');
+        const defendSec = sections[0] || null;
+        const criticSec = sections[1] || null;
+        const sourcesSec = card.querySelector('.sources-list');
+
+        if (defendSec && criticSec) {
+            defendSec.classList.add('tab-pane', 'pane-defend');
+            criticSec.classList.add('tab-pane', 'pane-critic');
+            if (sourcesSec) sourcesSec.classList.add('tab-pane', 'pane-sources');
+
+            // Criar barra de navegação de tabs
+            const tabsNav = document.createElement('div');
+            tabsNav.className = 'card-tabs-nav';
+
+            tabsNav.innerHTML = `
+                <button class="card-tab-btn active" data-tab="defend">✓ Forças</button>
+                <button class="card-tab-btn" data-tab="critic">⚠ Limites</button>
+                ${sourcesSec ? '<button class="card-tab-btn" data-tab="sources">📚 Fontes</button>' : ''}
+                <button class="card-tab-btn" data-tab="all">👁️ Ver Tudo</button>
+            `;
+
+            // Inserir tabsNav logo abaixo do card-header
+            header.insertAdjacentElement('afterend', tabsNav);
+
+            // Estado inicial: exibir Forças (defend), esconder critic e sources
+            defendSec.style.display = 'block';
+            criticSec.style.display = 'none';
+            if (sourcesSec) sourcesSec.style.display = 'none';
+
+            // Adicionar evento aos botões de tabs
+            const tabBtns = tabsNav.querySelectorAll('.card-tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const targetTab = btn.getAttribute('data-tab');
+
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    if (targetTab === 'defend') {
+                        defendSec.style.display = 'block';
+                        criticSec.style.display = 'none';
+                        if (sourcesSec) sourcesSec.style.display = 'none';
+                    } else if (targetTab === 'critic') {
+                        defendSec.style.display = 'none';
+                        criticSec.style.display = 'block';
+                        if (sourcesSec) sourcesSec.style.display = 'none';
+                    } else if (targetTab === 'sources') {
+                        defendSec.style.display = 'none';
+                        criticSec.style.display = 'none';
+                        if (sourcesSec) sourcesSec.style.display = 'block';
+                    } else if (targetTab === 'all') {
+                        defendSec.style.display = 'block';
+                        criticSec.style.display = 'block';
+                        if (sourcesSec) sourcesSec.style.display = 'block';
+                    }
+                });
+            });
+        }
+    });
+
+    // 2. SISTEMA DE COMPARAÇÃO "VERSUS"
+    const versusBar = document.getElementById('versusBar');
+    const nameSpan1 = document.getElementById('versusCardName1');
+    const nameSpan2 = document.getElementById('versusCardName2');
+    const btnOpenVersus = document.getElementById('btnOpenVersus');
+    const btnClearVersus = document.getElementById('btnClearVersus');
+    const versusModal = document.getElementById('versusModal');
+    const btnCloseVersus = document.getElementById('btnCloseVersus');
+    const versusModalContent = document.getElementById('versusModalContent');
+
+    function toggleCompare(cardEl, id, title, btn) {
+        const existingIndex = selectedForCompare.findIndex(item => item.id === id);
+
+        if (existingIndex !== -1) {
+            // Desmarcar
+            selectedForCompare.splice(existingIndex, 1);
+            btn.classList.remove('active');
+            btn.innerHTML = '⚔️ <span>Comparar</span>';
+        } else {
+            // Se já tem 2, remove o primeiro
+            if (selectedForCompare.length >= 2) {
+                const removed = selectedForCompare.shift();
+                const oldCard = document.querySelector(`[data-card-id="${removed.id}"]`);
+                if (oldCard) {
+                    const oldBtn = oldCard.querySelector('.btn-card-compare');
+                    if (oldBtn) {
+                        oldBtn.classList.remove('active');
+                        oldBtn.innerHTML = '⚔️ <span>Comparar</span>';
+                    }
+                }
+            }
+            selectedForCompare.push({ id, title, el: cardEl });
+            btn.classList.add('active');
+            btn.innerHTML = '✓ <span>Selecionado</span>';
+        }
+
+        updateVersusBar();
+    }
+
+    function updateVersusBar() {
+        if (selectedForCompare.length === 1) {
+            nameSpan1.textContent = selectedForCompare[0].title;
+            nameSpan2.textContent = '(Selecione o 2º)';
+            versusBar.classList.add('visible');
+            btnOpenVersus.style.display = 'none';
+        } else if (selectedForCompare.length === 2) {
+            nameSpan1.textContent = selectedForCompare[0].title;
+            nameSpan2.textContent = selectedForCompare[1].title;
+            versusBar.classList.add('visible');
+            btnOpenVersus.style.display = 'inline-block';
+        } else {
+            versusBar.classList.remove('visible');
+        }
+    }
+
+    btnClearVersus.addEventListener('click', () => {
+        selectedForCompare.forEach(item => {
+            const c = document.querySelector(`[data-card-id="${item.id}"]`);
+            if (c) {
+                const b = c.querySelector('.btn-card-compare');
+                if (b) {
+                    b.classList.remove('active');
+                    b.innerHTML = '⚔️ <span>Comparar</span>';
+                }
+            }
+        });
+        selectedForCompare = [];
+        updateVersusBar();
+    });
+
+    btnOpenVersus.addEventListener('click', () => {
+        if (selectedForCompare.length === 2) {
+            renderVersusModal();
+            versusModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+
+    btnCloseVersus.addEventListener('click', () => {
+        versusModal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    versusModal.addEventListener('click', (e) => {
+        if (e.target === versusModal) {
+            versusModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    function renderVersusModal() {
+        versusModalContent.innerHTML = '';
+        selectedForCompare.forEach(item => {
+            const col = document.createElement('div');
+            col.className = 'versus-col';
+            
+            // Clonar o card limpando tabs ou botões internos
+            const clone = item.el.cloneNode(true);
+            const btn = clone.querySelector('.btn-card-compare');
+            if (btn) btn.remove();
+            const tabsNav = clone.querySelector('.card-tabs-nav');
+            if (tabsNav) tabsNav.remove();
+            
+            // Garantir que todas as seções fiquem visíveis no modal
+            const allPanes = clone.querySelectorAll('.tab-pane');
+            allPanes.forEach(p => p.style.display = 'block');
+
+            col.appendChild(clone);
+            versusModalContent.appendChild(col);
+        });
+    }
+
+    // 3. FILTRAGEM POR CHIPS NO TOPO
+    const chipBtns = document.querySelectorAll('.chip-btn');
+    const sections = document.querySelectorAll('.page-section');
+
+    chipBtns.forEach(chip => {
+        chip.addEventListener('click', () => {
+            chipBtns.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+
+            const filterTarget = chip.getAttribute('data-filter');
+
+            if (filterTarget === 'all') {
+                sections.forEach(sec => {
+                    sec.style.display = '';
+                });
+            } else {
+                sections.forEach(sec => {
+                    if (sec.id === filterTarget) {
+                        sec.style.display = '';
+                        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        sec.style.display = 'none';
+                    }
+                });
+            }
+        });
+    });
+
+    // 4. ATALHOS DE TECLADO
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (versusModal.classList.contains('active')) {
+                versusModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+});
+</script>
+
+
+<script>
+  function sendHeightToParent() {
+    if (window.parent && window.parent !== window) {
+      const h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      window.parent.postMessage({ type: 'set-iframe-height', height: h }, '*');
+    }
+  }
+  window.addEventListener('load', () => setTimeout(sendHeightToParent, 200));
+  window.addEventListener('resize', () => setTimeout(sendHeightToParent, 100));
+  document.addEventListener('click', () => setTimeout(sendHeightToParent, 150));
+</script>
+
+</body>
+</html>
+
