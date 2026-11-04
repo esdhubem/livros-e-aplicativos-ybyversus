@@ -200,8 +200,12 @@
       </div>
     </nav>
 
-    <!-- 2.1 SELETOR DOS QUATRO MODOS PRINCIPAIS (DESIGN EM CARDS FIXOS) -->
-    <div class="px-3.5 py-2 bg-[#030A17] border-b border-[#132B4F] shrink-0 z-20 space-y-1.5">
+    <!-- 3. ÁREA DE CONTEÚDO COM ROLAGEM INTERNA PERFEITA -->
+    <main class="flex-1 min-h-0 app-screen-scroll px-3.5 pt-2 pb-6 space-y-3.5" tabindex="0" aria-label="Conteúdo dos indicadores de Bem Viver">
+
+      <!-- MENU DOS 4 MODOS (ROLAGEM FLUIDA COM O CONTEÚDO PARA MAXIMIZAR A VISÃO) -->
+      <!-- 2.1 SELETOR DOS QUATRO MODOS PRINCIPAIS (DESIGN EM CARDS FIXOS) -->
+    <div id="top-four-modes-menu" class="w-full space-y-1.5 mb-2.5 pt-1">
       <!-- 1. Radar das Dimensões -->
       <button id="main-tab-radar" type="button" onclick="switchMainTab('radar')" class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-[#06152B]/60 border border-slate-800 text-slate-400 hover:border-slate-700 shadow-xs active:scale-[0.98] transition group tap-active" title="Acessar o Radar das Dimensões">
         <div class="flex items-center gap-2.5 min-w-0">
@@ -269,7 +273,7 @@
       </button>
 
       <!-- 4. Comparativo: PIB vs. Bem Viver & Ubuntu -->
-      <button id="main-tab-comparativo" type="button" onclick="switchMainTab('radar'); switchTab('comparativo', document.getElementById('tab-btn-comparativo')); highlightTabComparativo();" class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-[#06152B]/60 border border-slate-800 text-slate-400 hover:border-cyan-400/50 hover:text-white shadow-xs active:scale-[0.98] transition group tap-active" title="Ver Comparativo: PIB vs. Bem Viver & Ubuntu">
+      <button id="main-tab-comparativo" type="button" onclick="switchMainTab('comparativo')" class="w-full text-left flex items-center justify-between p-2 rounded-xl bg-[#06152B]/60 border border-slate-800 text-slate-400 hover:border-cyan-400/50 hover:text-white shadow-xs active:scale-[0.98] transition group tap-active" title="Ver Comparativo: PIB vs. Bem Viver & Ubuntu">
         <div class="flex items-center gap-2.5 min-w-0">
           <div id="iconbox-tab-comparativo" class="w-7 h-7 rounded-lg bg-slate-800/60 text-slate-400 group-hover:bg-cyan-500/20 group-hover:text-cyan-300 flex items-center justify-center text-sm border border-slate-700/60 group-hover:border-cyan-500/40 shrink-0 shadow-inner transition-colors">
             ⚖️
@@ -290,8 +294,6 @@
       </button>
     </div>
 
-    <!-- 3. ÁREA DE CONTEÚDO COM ROLAGEM INTERNA PERFEITA -->
-    <main class="flex-1 min-h-0 app-screen-scroll px-4 pt-3 pb-8 space-y-4" tabindex="0" aria-label="Conteúdo dos indicadores de Bem Viver">
 
       <!-- ======================================================== -->
       <!-- VISUALIZAÇÃO: PERSPECTIVAS DOS ÍNDICES                   -->
@@ -1175,39 +1177,7 @@
 
     </main>
 
-    <!-- 4. RODAPÉ FIXO UNIFICADO (MESMO PADRÃO DA PRAÇA) -->
-    <nav class="shrink-0 z-30 px-3 pt-2 pb-3.5 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_25px_rgba(20,10,5,0.85)]" style="background: linear-gradient(180deg, rgba(62, 34, 18, 0.98) 0%, rgba(36, 19, 10, 0.99) 100%); border-top: 1.5px solid rgba(199, 150, 55, 0.4); padding-bottom: max(16px, env(safe-area-inset-bottom, 16px)); min-height: 68px;" aria-label="Navegação principal inferior">
-      <!-- 1. Praça -->
-      <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-300 hover:text-white transition-colors tap-active group">
-        <i data-lucide="layout-grid" class="w-5 h-5"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Praça</span>
-      </a>
-
-      <!-- 2. Tempo -->
-      <a href="previsaotempoastros.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
-        <i data-lucide="cloud-sun" class="w-5 h-5"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Tempo</span>
-      </a>
-
-      <!-- 3. Botão Central Elevado (+) Cultivar Saber (Verde Florescente) -->
-      <div class="relative -top-5 px-2 flex flex-col items-center shrink-0">
-        <a href="index.html" title="Cultivar Saber" class="w-13 h-13 rounded-full bg-gradient-to-tr from-[#15803d] via-[#22c55e] to-[#4ade80] text-[#052e16] flex items-center justify-center border-2 border-[#86efac] shadow-[0_4px_24px_rgba(34,197,94,0.95),0_0_22px_rgba(74,222,128,0.85)] active:scale-95 hover:scale-110 transition-all tap-active">
-          <i data-lucide="plus" class="w-7 h-7 stroke-[3.5] text-[#052e16]"></i>
-        </a>
-      </div>
-
-      <!-- 4. Eco Bem Viver (Ativo nesta página) -->
-      <div class="flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active group" aria-current="page" title="Eco Bem Viver: Além do PIB">
-        <i data-lucide="leaf" class="w-5 h-5 text-[#E5C384] stroke-[2.2]"></i>
-        <span class="text-[10px] font-bold tracking-tight mt-0.5 text-[#E5C384]">Eco BemViver</span>
-      </div>
-
-      <!-- 5. Presença -->
-      <a href="index.html#presenca" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-[#E5C384] transition-colors tap-active group">
-        <i data-lucide="user" class="w-5 h-5"></i>
-        <span class="text-[10px] font-medium tracking-tight mt-0.5">Presença</span>
-      </a>
-    </nav>
+    <!-- Rodapé inferior removido para maximizar a área de leitura e navegação do Livro-Aplicativo -->
 
   </div>
 
@@ -1614,6 +1584,19 @@
         } else {
           setTimeout(resizeRadarCharts, 50);
         }
+      } else if (view === 'comparativo') {
+        viewRadar.classList.remove('hidden');
+        setMainTabActive('comparativo', 'cyan');
+
+        if (!window.radarInitialized) {
+          initAllRadarComponents();
+          window.radarInitialized = true;
+        }
+        const btnComp = document.getElementById('tab-btn-comparativo');
+        if (btnComp && typeof switchTab === 'function') {
+          switchTab('comparativo', btnComp);
+        }
+        setTimeout(resizeRadarCharts, 50);
       } else if (view === 'filosofias') {
         if (viewFilosofias) {
           viewFilosofias.classList.remove('hidden');
