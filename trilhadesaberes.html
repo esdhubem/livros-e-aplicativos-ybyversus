@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <title>YBY Versus - Trilha de Saberes • Divulgação de Artigos e Trilhas de Pesquisa</title>
+  <meta name="description" content="Divulgação científica e leitura de pesquisas decoloniais, etnobotânica, saúde coletiva e agroecologia no YBY versus.">
+
+  <!-- Acessibilidade & Viewport com ZOOM TOTALMENTE LIBERADO (WCAG 2.2) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- PWA Manifest & Suporte Mobile -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#040E1E">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Google Fonts: Outfit (Títulos) & Plus Jakarta Sans (Interface) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #020813;
+      overflow-x: hidden;
+    }
+
+    /* Fundo Cósmico Idêntico ao App */
+    .app-cosmic-bg {
+      background-color: #030A16;
+      background-image:
+        radial-gradient(circle at 50% 12%, rgba(20, 50, 95, 0.45) 0%, rgba(3, 10, 22, 0.85) 60%, rgba(2, 6, 15, 0.98) 100%),
+        linear-gradient(180deg, rgba(3, 10, 22, 0.5) 0%, rgba(3, 10, 22, 0.4) 45%, rgba(2, 6, 15, 0.8) 100%),
+        url('assets/cosmic-sky.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .font-brand {
+      font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .app-screen-scroll {
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .app-screen-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .app-screen-scroll::-webkit-scrollbar-track {
+      background: rgba(7, 22, 15, 0.4);
+    }
+    .app-screen-scroll::-webkit-scrollbar-thumb {
+      background: rgba(229, 195, 132, 0.35);
+      border-radius: 9999px;
+    }
+
+    .tap-active:active {
+      transform: scale(0.97);
+      transition: transform 0.1s ease;
+    }
+
+    /* Banner/Card de Divulgação de Artigos - Design Visual Minimalista */
+    .research-card {
+      flex: 0 0 calc(100% - 38px);
+      max-width: 350px;
+      min-width: 295px;
+      scroll-snap-align: start;
+      background: #020726;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65), 0 2px 8px rgba(11, 27, 82, 0.5);
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 14px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .research-card:hover {
+      border-color: rgba(229, 195, 132, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
+    }
+
+    .playlist-scroll {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 6px 4px 16px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
+      user-select: none;
+    }
+    .playlist-scroll.is-dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
+    }
+    .playlist-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Card Eixo Temático */
+    .eixo-card {
+      background: rgba(9, 28, 54, 0.75);
+      border: 1px solid rgba(229, 195, 132, 0.25);
+      border-radius: 16px;
+      padding: 12px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+    }
+    .eixo-card:hover, .eixo-card:active {
+      background: rgba(229, 195, 132, 0.15);
+      border-color: #E5C384;
+      transform: translateY(-2px);
+    }
+
+    /* Ocultar barra de rolagem */
+    .scrollbar-none {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .scrollbar-none::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Foco acessível */
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid #E5C384;
+      outline-offset: 2px;
+    }
+  
+    /* Fixação Universal da Moldura e Barra de Rodapé YBY VersuS */
+    html, body {
+      height: 100%;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+    }
+    @media (max-width: 639px) {
+      html, body {
+        overflow: hidden;
+      }
+    }
+    #phone-container {
+      height: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 640px) {
+      body {
+        overflow: auto;
+      }
+      #phone-container {
+        height: 870px;
+        max-height: 96vh;
+      }
+    }
+    .app-screen-scroll {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+
+  </style>
+</head>
+
+<body class="bg-[#020813] text-slate-100 min-h-screen flex items-center justify-center p-0 sm:p-6 overflow-x-hidden relative selection:bg-amber-500 selection:text-black">
+
+  <!-- ======================================================== -->
+  <!-- FUNDO CÓSMICO EXTERNO (PARA DESKTOPS COM MOLDURA CELULAR) -->
+  <!-- ======================================================== -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center" aria-hidden="true">
+    <svg class="absolute -top-28 -right-28 w-[680px] h-[680px] opacity-40" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="280" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="3 6"/>
+      <circle cx="300" cy="300" r="240" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="300" cy="300" r="160" stroke="#E5C384" stroke-width="1.5" opacity="0.7"/>
+      <circle cx="460" cy="300" r="9" fill="#E5C384" filter="drop-shadow(0 0 12px rgba(229,195,132,0.8))"/>
+    </svg>
+
+    <svg class="absolute -bottom-36 -left-36 w-[600px] h-[600px] opacity-40" viewBox="0 0 600 600" fill="none">
+      <circle cx="300" cy="300" r="260" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="4 6"/>
+      <circle cx="300" cy="300" r="210" stroke="#E5C384" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="390" cy="300" r="7" fill="#E5C384"/>
+    </svg>
+
+    <span class="absolute top-12 left-12 text-[#E5C384] text-xl opacity-80 animate-pulse">✦</span>
+    <span class="absolute top-28 left-48 text-[#FBF0D9] text-xs opacity-60">✦</span>
+    <span class="absolute top-20 right-28 text-[#FBF0D9] text-lg opacity-85 animate-pulse">✦</span>
+    <span class="absolute bottom-20 left-24 text-[#E5C384] text-lg opacity-80 animate-pulse">✦</span>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MOLDURA DO SMARTPHONE (CARA DE APLICATIVO NATIVO)        -->
+  <!-- ======================================================== -->
+  <div id="phone-container" class="relative z-10 w-full h-[100dvh] max-h-[100dvh] sm:max-w-[412px] sm:h-[870px] sm:max-h-[96vh] app-cosmic-bg sm:rounded-[46px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(212,175,55,0.06)] flex flex-col overflow-hidden border-0 sm:border sm:border-[#142C4E] transition-all">
+
+    <!-- 1. STATUS BAR DO CELULAR -->
+    <header class="px-7 pt-3 pb-1 flex items-center justify-between text-xs font-bold text-[#E5C384]/90 shrink-0 select-none bg-[#030A16]">
+      <span class="tracking-tight text-[13px] text-slate-200">9:41</span>
+      <div class="flex items-center gap-1.5 text-slate-200">
+        <i data-lucide="signal" class="w-3.5 h-3.5 fill-current"></i>
+        <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+        <div class="w-5 h-2.5 rounded-sm border-[1.5px] border-slate-200 p-0.5 flex items-center justify-end">
+          <div class="h-full w-full bg-slate-200 rounded-xs"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. CABEÇALHO DO APLICATIVO COM BOTÃO VOLTAR -->
+    <nav class="px-5 pt-2 pb-3 bg-[#040E1E] border-b border-[#132B4F] flex items-center justify-between shrink-0 gap-2">
+      <div class="flex items-center gap-3">
+        <!-- Botão Voltar para a Praça -->
+        <a href="index.html" title="Voltar para a Praça Pública" aria-label="Voltar para a Praça Pública" class="w-10 h-10 rounded-full bg-[#07172F] border border-[#132B4F] flex items-center justify-center text-[#E5C384] hover:text-white hover:border-amber-400/40 transition-all tap-active shrink-0">
+          <i data-lucide="arrow-left" class="w-5 h-5 stroke-[2]"></i>
+        </a>
+        <div>
+          <h1 class="font-brand text-base font-bold text-[#FFF6E5] leading-tight flex items-center gap-1.5">
+            <span>Trilha de Saberes</span>
+            <span class="text-[9px] uppercase px-1.5 py-0.2 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">Ciência</span>
+          </h1>
+          <span class="text-[10px] text-[#A1C1B0]">Divulgação de Artigos & Pesquisas</span>
+        </div>
+      </div>
+
+      <a href="index.html" class="px-3 py-1.5 rounded-full bg-[#07172F] border border-[#132B4F] text-xs text-[#E5C384] hover:text-white flex items-center gap-1 tap-active shrink-0">
+        <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span>Praça</span>
+      </a>
+    </nav>
+
+    <!-- 3. ÁREA DE CONTEÚDO COM ROLAGEM INTERNA DO SMARTPHONE -->
+    <main class="flex-1 app-screen-scroll px-4 pt-3 pb-24 space-y-4 min-h-0">
+
+      <!-- BANNER DE APRESENTAÇÃO -->
+      <div class="text-center py-1">
+        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#091C36] border border-[#142C4E] text-[11px] text-[#E5C384] font-medium mb-1.5">
+          <span>🌿</span> YBY Versus - Trilha de Saberes
+        </div>
+        <h2 class="font-brand text-lg font-bold text-[#FFF6E5] leading-tight">
+          Divulgação de Artigos e Trilhas de Pesquisa
+        </h2>
+      </div>
+
+      <!-- TEXTO INFORMATIVO E DE ORIENTAÇÃO (SEM CAIXAS/QUADROS) -->
+      <div class="px-1 text-xs text-slate-300 leading-relaxed text-justify">
+        <p>
+          Aqui divulgamos ensaios, reflexões e pesquisas qualitativas com a finalidade de incentivar a leitura, a troca de ideias e conversas, temas para vídeos e visibilidade ao trabalho de diversos autores, que têm direitos e responsabilidade sobre o conteúdo. Trabalhamos como um canal de divulgação. Acesse o link para conhecer o trabalho na origem. Nosso objetivo é democratizar o conhecimento, a leitura e convite ao diálogo.
+        </p>
+      </div>
+
+      <!-- MANIFESTO DE TEMAS DE PESQUISA: O GIRO QUE TRANSFORMA A TERRA -->
+      <div class="px-1">
+        <a href="manifesto_temas_pesquisa.html" class="w-full p-2.5 rounded-2xl bg-gradient-to-r from-[#091F3E] via-[#0D2B54] to-[#091F3E] border border-amber-500/35 flex items-center justify-between text-xs text-slate-100 hover:border-amber-400 transition-all tap-active shadow-sm group">
+          <div class="flex items-center gap-2.5">
+            <span class="text-xl group-hover:rotate-12 transition-transform">📜</span>
+            <div class="text-left">
+              <span class="font-bold text-[#E5C384] block text-[11px] leading-tight">O Manifesto YBY VersuS: O Giro que Transforma a Terra</span>
+              <span class="text-[9.5px] text-slate-300">Conheça a fundamentação dos nossos eixos de pesquisa científica e sabedoria originária</span>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-[#E5C384] shrink-0"></i>
+        </a>
+      </div>
+
+      <!-- TEMAS: ACESSO RÁPIDO APENAS COM ÍCONE E TÍTULO (SEM QUADRADOS) -->
+      <div class="px-1 pt-1 pb-1">
+        <div class="mb-2 flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-200 uppercase tracking-wider">Temas</span>
+          <button onclick="scrollTemasCarousel()" class="text-[10.5px] font-bold text-emerald-950 bg-gradient-to-r from-[#a7f3d0] to-[#fef08a] hover:brightness-105 active:scale-95 px-3 py-1 rounded-full flex items-center gap-1.5 transition-all shadow-sm border border-emerald-300/40 tap-active cursor-pointer" title="Deslizar para ver todos os temas">
+            <span>Deslize para ver todos</span>
+            <span class="text-[11px] leading-none">👉</span>
+          </button>
+        </div>
+        <div id="temas-icons-carousel" class="flex gap-2 overflow-x-auto pb-2 scrollbar-none select-none">
+          <button type="button" onclick="scrollToPlaylist('tecnologia')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">💻</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Tecnologia & Soberania</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('artes')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🎨</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Línguas, Artes & Música</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('educacao')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">📚</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Educação & Decolonialidade</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('saberes')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🏺</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Saberes Tradicionais & História</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('genero')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">⚖️</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Gênero & Justiça Social</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('astronomia')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🔭</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Astronomia & Cosmologia</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('filosofia')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🕯️</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Filosofias & Cosmologias</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('agro')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🌾</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Agroecologia & Soberania</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('etno')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🌱</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Plantas Medicinais & Etnobotânica</span>
+          </button>
+          <button type="button" onclick="scrollToPlaylist('saude')" class="shrink-0 w-24 flex flex-col items-center justify-start p-1.5 group tap-active hover:opacity-85 transition-all cursor-pointer text-center">
+            <span class="text-2xl mb-1 group-hover:scale-110 transition-transform">🏥</span>
+            <span class="text-[10px] font-bold text-[#E5C384] leading-tight">Saúde Coletiva (PICS)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- BARRA DE PESQUISA (PESQUISADOR DE ARTIGOS & TEMAS) -->
+      <div class="px-1 pt-1 pb-1">
+        <div class="relative flex items-center bg-[#0A1F3D] rounded-full p-1 pl-4 border border-amber-500/20 shadow-xs focus-within:ring-2 focus-within:ring-amber-500/30">
+          <input type="text" id="trilhas-search-input" onkeyup="handleTrilhasSearch(event)" oninput="handleTrilhasSearch(event)" placeholder="Pesquisar saberes, mestres ou temas..." class="w-full text-xs text-slate-100 placeholder-slate-400 bg-transparent focus:outline-none">
+          <button onclick="executeTrilhasSearch()" title="Buscar artigos e saberes" class="w-8 h-8 rounded-full bg-gradient-to-r from-[#D8AC52] to-[#9C7323] text-black flex items-center justify-center shrink-0 shadow-xs active:scale-95 transition-transform tap-active font-bold cursor-pointer">
+            <i data-lucide="search" class="w-4 h-4 stroke-[2.5]"></i>
+          </button>
+        </div>
+      </div>
+
+            <!-- ======================================================== -->
+      <!-- SEÇÕES DINÂMICAS PREENCHIDAS VIA /data/trilhas.json     -->
+      <!-- ======================================================== -->
+      
+      <!-- TEMA 1: TECNOLOGIA, SOBERANIA E DESCENTRALIZAÇÃO -->
+      <section id="tecnologia" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>💻</span> Tecnologia, Soberania e Descentralização
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Ciência da Computação, Engenharias, Ciências Sociais Aplicadas e Ciência Política.
+            </p>
+          </div>
+          <a href="tema-tecnologia.html" title="Ver todos os artigos de Tecnologia e Soberania" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-tecnologia">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 2: LÍNGUAS, ARTES E MÚSICA -->
+      <section id="artes" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🎨</span> Línguas, Artes e Música
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Letras, Linguística, Artes e Música.
+            </p>
+          </div>
+          <a href="tema-artes.html" title="Ver todos os artigos de Línguas, Artes e Música" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-artes">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 3: EDUCAÇÃO E DECOLONIALIDADE -->
+      <section id="educacao" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>📚</span> Educação e Decolonialidade
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Educação (inclui temas das leis 10.639/03 e 11.645/08), Ciências Humanas.
+            </p>
+          </div>
+          <a href="tema-educacao.html" title="Ver todos os artigos de Educação e Decolonialidade" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-educacao">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 4: SABERES TRADICIONAIS, ANTROPOLOGIA, HISTÓRIA E SOCIOLOGIA -->
+      <section id="saberes" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🏺</span> Saberes Tradicionais, Antropologia, História e Sociologia
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Saberes Tradicionais, Antropologia, História e Sociologia.
+            </p>
+          </div>
+          <a href="tema-saberes.html" title="Ver todos os artigos de Saberes Tradicionais" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-saberes">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 5: GÊNERO E JUSTIÇA SOCIAL -->
+      <section id="genero" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>⚖️</span> Gênero e Justiça Social
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Sociologia, Antropologia, Interdisciplinar.
+            </p>
+          </div>
+          <a href="tema-genero.html" title="Ver todos os artigos de Gênero e Justiça Social" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-genero">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 6: ASTRONOMIA E COSMOLOGIA FÍSICA -->
+      <section id="astronomia" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🔭</span> Astronomia e Cosmologia Física
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Física e Astronomia.
+            </p>
+          </div>
+          <a href="tema-astronomia.html" title="Ver todos os artigos de Astronomia e Cosmologia" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-astronomia">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 7: FILOSOFIAS E COSMOLOGIAS -->
+      <section id="filosofia" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🕯️</span> Filosofias e Cosmologias
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Filosofia, Ciências da Religião e Teologia.
+            </p>
+          </div>
+          <a href="tema-filosofia.html" title="Ver todos os artigos de Filosofias e Cosmologias" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-filosofia">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 8: AGROECOLOGIA E SOBERANIA ALIMENTAR -->
+      <section id="agro" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🌾</span> Agroecologia e Soberania Alimentar
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Agroecologia e Soberania Alimentar.
+            </p>
+          </div>
+          <a href="tema-agro.html" title="Ver todos os artigos de Agroecologia e Soberania Alimentar" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-agro">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 9: PLANTAS MEDICINAIS, ETNOFARMACOLOGIA E ETNOBOTÂNICA -->
+      <section id="etno" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🌱</span> Plantas Medicinais, Etnofarmacologia e Etnobotânica
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Plantas Medicinais, Etnofarmacologia e Etnobotânica.
+            </p>
+          </div>
+          <a href="tema-etno.html" title="Ver todos os artigos de Plantas Medicinais e Etnobotânica" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-etno">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- TEMA 10: SAÚDE COLETIVA E PRÁTICAS INTEGRATIVAS (PICS) -->
+      <section id="saude" class="pt-2">
+        <div class="mb-2 px-1 flex items-center justify-between">
+          <div>
+            <h3 class="font-brand text-sm font-bold text-[#E5C384] flex items-center gap-1.5">
+              <span>🏥</span> Saúde Coletiva e Práticas Integrativas (PICS)
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-snug mt-0.5">
+              Saúde Coletiva e Práticas Integrativas (PICS).
+            </p>
+          </div>
+          <a href="tema-saude.html" title="Ver todos os artigos de Saúde Coletiva e PICS" class="flex items-center gap-1 text-[10.5px] text-[#E5C384] hover:text-white font-bold shrink-0 bg-[#091c36] hover:bg-[#142C4E] px-2.5 py-1 rounded-full border border-[#E5C384]/40 shadow-xs active:scale-95 transition-all tap-active">
+            <span>Saiba Mais</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+          </a>
+        </div>
+        <div class="playlist-scroll" id="container-saude">
+          <!-- Renderizado via script -->
+        </div>
+      </section>
+
+      <!-- RODAPÉ INSTITUCIONAL: MANIFESTO, POLÍTICAS E TERMOS -->
+      <footer class="pt-6 pb-2 px-2 text-center space-y-3 border-t border-slate-800/80">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#071933] border border-amber-500/20 text-[#E5C384] text-[11px] font-bold">
+          <span>📜</span>
+          <a href="manifesto_temas_pesquisa.html" class="hover:underline">Manifesto de Pesquisa: O Giro que Transforma a Terra</a>
+        </div>
+        <div class="flex items-center justify-center gap-2 flex-wrap text-[10.5px] text-slate-400">
+          <a href="CARTA_ABERTA_MANIFESTO.md" target="_blank" class="hover:text-[#E5C384] underline">Carta Aberta</a>
+          <span>•</span>
+          <a href="TERMOS_DE_USO_E_CONDUTA.md" target="_blank" class="hover:text-[#E5C384] underline">Termos de Uso</a>
+          <span>•</span>
+          <a href="POLITICA_DE_PRIVACIDADE.md" target="_blank" class="hover:text-[#E5C384] underline">Privacidade (LGPD)</a>
+        </div>
+        <p class="text-[9.5px] text-slate-500">
+          © 2026 Ecossistema YBY VersuS • Ciência, Ancestralidade e Soberania Comunitária
+        </p>
+      </footer>
+
+    </main>
+
+    <!-- 4. RODAPÉ FIXO DO APLICATIVO (BOTTOM NAVIGATION BAR) -->
+    <nav class="shrink-0 z-30 bg-[#030A16]/95 backdrop-blur-md border-t border-[#142C4E] px-3 pt-1 pb-2 sm:pb-3 flex items-center justify-between relative shadow-[0_-8px_20px_rgba(0,0,0,0.8)]">
+      <!-- Praça -->
+      <a href="index.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
+        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Praça</span>
+      </a>
+
+      <!-- Tempo (Previsão: Tempo, Mar e Céu) -->
+      <a href="previsaotempoastros.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-200 transition-colors tap-active group">
+        <i data-lucide="cloud-sun" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Tempo</span>
+      </a>
+
+      <!-- Botão Central (+) -->
+      <div class="relative -top-4 px-2 flex flex-col items-center shrink-0">
+        <a href="index.html" title="Cultivar Saber na Praça" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C79637] via-[#E5C384] to-[#FFF6E5] text-[#1A1204] flex items-center justify-center border-2 border-[#E5C384] shadow-[0_4px_22px_rgba(229,195,132,0.85),0_0_18px_rgba(199,150,55,0.7)] active:scale-95 hover:scale-105 transition-all tap-active">
+          <i data-lucide="plus" class="w-6 h-6 stroke-[3.5] text-[#1A1204]"></i>
+        </a>
+      </div>
+
+      <!-- Eco Bem Viver (onde aponta a seta vermelha do usuário: entre Acervo e Presença) -->
+      <a href="livraria.html" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-[#E5C384] transition-colors tap-active group" title="Livraria YBY: Livros, E-books e Aplicativos">
+        <i data-lucide="book-open" class="w-5 h-5 text-amber-300 group-hover:text-[#E5C384] transition-colors"></i>
+        <span class="text-[10px] font-medium tracking-tight mt-0.5">Livraria</span>
+      </a>
+
+      <!-- Presença -->
+      <a href="index.html#presenca" class="flex flex-col items-center justify-center flex-1 py-1 text-[#E5C384] transition-colors tap-active group">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-bold tracking-tight mt-0.5">Presença</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <!-- SCRIPT DE CARREGAMENTO LOCAL DINÂMICO & NAVEGAÇÃO -->
+  <script>
+    function renderCard(item) {
+      const tipo = (item.tipoPublicacao || 'Artigo de Pesquisa').toUpperCase();
+      const imgUrl = item.imagem || 'assets/artigos/pensamento-decolonial-thumb.png';
+      const linkUrl = item.url || '#';
+      const targetAttr = linkUrl === '#' ? '' : 'target="_blank" rel="noopener noreferrer"';
+      const clickHandler = linkUrl === '#' ? 'onclick="event.preventDefault(); alert(\'Este link será disponibilizado em breve na íntegra.\');"' : '';
+
+      return `
+        <article class="research-card">
+          <!-- Coluna Esquerda: Badge e Título -->
+          <div class="flex-1 flex flex-col justify-between pr-2 min-w-0">
+            <div>
+              <span class="inline-block px-3 py-1 text-[9.5px] font-black uppercase tracking-wider rounded-full bg-[#0b1b4f] text-[#6ea8fe] border border-[#1b3584]/60 shadow-sm">
+                ${tipo}
+              </span>
+            </div>
+            
+            <h4 class="font-bold text-white text-[15px] sm:text-[16px] leading-snug mt-3 mb-1 line-clamp-3 select-none">
+              ${item.titulo}
+            </h4>
+          </div>
+
+          <!-- Coluna Direita: Imagem Temática e Botão 'Ler na Fonte' -->
+          <div class="w-[122px] shrink-0 flex flex-col items-center justify-between gap-2.5">
+            <div class="w-full h-[96px] rounded-xl overflow-hidden shadow-md border border-white/10 bg-[#091c36]">
+              <img src="${imgUrl}" alt="${item.titulo}" class="w-full h-full object-cover select-none pointer-events-none" loading="lazy" onerror="this.src='assets/card-floresta-sagrada.jpg'">
+            </div>
+            
+            <a href="${linkUrl}" 
+               ${targetAttr}
+               ${clickHandler}
+               title="Ler publicação na íntegra"
+               class="w-full text-center py-2 px-1 rounded-full bg-[#c2db1d] hover:bg-[#b0c714] active:scale-95 text-[#0a1505] font-black text-xs shadow-md transition-transform duration-150 block tracking-wide tap-active select-none">
+              Ler na Fonte
+            </a>
+          </div>
+        </article>
+      `;
+    }
+
+    // Habilitar drag horizontal suave com mouse (desktop) e toque (mobile)
+    function enableMouseDragScroll(element) {
+      if (!element) return;
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      element.addEventListener('mousedown', (e) => {
+        // Se clicar diretamente no link 'Ler na Fonte', não interrompe o clique
+        if (e.target.tagName === 'A' || e.target.closest('a')) return;
+        isDown = true;
+        element.classList.add('is-dragging');
+        startX = e.pageX - element.offsetLeft;
+        scrollLeft = element.scrollLeft;
+      });
+
+      element.addEventListener('mouseleave', () => {
+        isDown = false;
+        element.classList.remove('is-dragging');
+      });
+
+      element.addEventListener('mouseup', () => {
+        isDown = false;
+        element.classList.remove('is-dragging');
+      });
+
+      element.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - element.offsetLeft;
+        const walk = (x - startX) * 1.6;
+        element.scrollLeft = scrollLeft - walk;
+      });
+    }
+
+    // Dados embutidos de contingência imediata caso fetch tenha atraso ou bloqueio
+    const TRILHAS_FALLBACK = [
+  {
+    "id": "tecnologia-01",
+    "eixo": "tecnologia",
+    "titulo": "Soberania Tecnológica, Redes Comunitárias e Protocolos Abertos",
+    "tipoPublicacao": "Análise Técnica",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/hero-forest.jpg"
+  },
+  {
+    "id": "artes-01",
+    "eixo": "artes",
+    "titulo": "Línguas Indígenas, Poéticas Ancestrais e Música de Reexistência",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/rainforest-bg.jpg"
+  },
+  {
+    "id": "educacao-01",
+    "eixo": "educacao",
+    "titulo": "O pensamento decolonial: análise, desafios e perspectivas",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/artigos/pensamento-decolonial-thumb.png"
+  },
+  {
+    "id": "educacao-02",
+    "eixo": "educacao",
+    "titulo": "Educação das Relações Étnico-Raciais: Desafios das Leis 10.639 e 11.645",
+    "tipoPublicacao": "Revisão Crítica",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/hero-forest.jpg"
+  },
+  {
+    "id": "saberes-01",
+    "eixo": "saberes",
+    "titulo": "Antropologia dos Saberes Tradicionais e Memória Oral Comunitária",
+    "tipoPublicacao": "Estudo Qualitativo",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-sol-ancestral.jpg"
+  },
+  {
+    "id": "genero-01",
+    "eixo": "genero",
+    "titulo": "Guardiãs das Sementes: Mulheres, Biodiversidade e Bens Comuns",
+    "tipoPublicacao": "Capítulo de Livro",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-floresta-sagrada.jpg"
+  },
+  {
+    "id": "genero-02",
+    "eixo": "genero",
+    "titulo": "Economia Feminista, Educação Popular e Quintais Produtivos",
+    "tipoPublicacao": "Estudo Qualitativo",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-mestres-terra.jpg"
+  },
+  {
+    "id": "astronomia-01",
+    "eixo": "astronomia",
+    "titulo": "Arqueoastronomia e Cosmologia Física dos Céus do Sul",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/cosmic-sky.jpg"
+  },
+  {
+    "id": "filosofia-01",
+    "eixo": "filosofia",
+    "titulo": "Filosofias Ameríndias e Cosmologias do Bem Viver",
+    "tipoPublicacao": "Capítulo de Livro",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-portal-luz.jpg"
+  },
+  {
+    "id": "agro-01",
+    "eixo": "agro",
+    "titulo": "Agroecologia, Circuitos Curtos e Soberania Alimentar Popular",
+    "tipoPublicacao": "Análise de Política",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/dola-forest.jpg"
+  },
+  {
+    "id": "agro-02",
+    "eixo": "agro",
+    "titulo": "Agroflorestas Sucessionais e Soberania Alimentar na Mata Atlântica",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/rainforest-bg.jpg"
+  },
+  {
+    "id": "etno-01",
+    "eixo": "etno",
+    "titulo": "Plantas Medicinais e Conhecimento Tradicional no Brasil Central",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-floresta-sagrada.jpg"
+  },
+  {
+    "id": "etno-02",
+    "eixo": "etno",
+    "titulo": "Etnobotânica e Justiça Territorial: Diálogos com Saberes Locais",
+    "tipoPublicacao": "Revisão Crítica",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-sol-ancestral.jpg"
+  },
+  {
+    "id": "saude-01",
+    "eixo": "saude",
+    "titulo": "Práticas Integrativas e Complementares no Cuidado Comunitário",
+    "tipoPublicacao": "Artigo de Pesquisa",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-mestres-terra.jpg"
+  },
+  {
+    "id": "saude-02",
+    "eixo": "saude",
+    "titulo": "Hortas Medicinais Comunitárias e Saúde Emancipatória",
+    "tipoPublicacao": "Relato de Experiência",
+    "url": "https://www.academia.edu/download/57326990/pensamento_decolonial.pdf",
+    "imagem": "assets/card-portal-luz.jpg"
+  }
+];
+
+    let currentTrilhasData = TRILHAS_FALLBACK;
+
+    // Carregamento dinâmico a partir de /data/trilhas.json com fallback instantâneo
+    async function loadTrilhasData() {
+      try {
+        const response = await fetch('./data/trilhas.json');
+        if (!response.ok) throw new Error('Falha HTTP: ' + response.status);
+        const data = await response.json();
+        currentTrilhasData = data;
+        distributeCards(data);
+      } catch (err) {
+        console.warn('[Trilha de Saberes] Usando dados embutidos de contingência:', err);
+        currentTrilhasData = TRILHAS_FALLBACK;
+        distributeCards(TRILHAS_FALLBACK);
+      }
+    }
+
+    function handleTrilhasSearch(event) {
+      if (event && event.key === 'Enter') {
+        executeTrilhasSearch();
+        return;
+      }
+      applyTrilhasFilter(document.getElementById('trilhas-search-input').value);
+    }
+
+    function executeTrilhasSearch() {
+      const input = document.getElementById('trilhas-search-input');
+      const query = input ? input.value : '';
+      applyTrilhasFilter(query);
+      if (query && query.trim()) {
+        const firstVisible = document.querySelector('section:not(.hidden)');
+        if (firstVisible) {
+          firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    function applyTrilhasFilter(query) {
+      const q = (query || '').toLowerCase().trim();
+      const list = currentTrilhasData || TRILHAS_FALLBACK;
+      const containers = {
+        tecnologia: document.getElementById('container-tecnologia'),
+        artes: document.getElementById('container-artes'),
+        educacao: document.getElementById('container-educacao'),
+        saberes: document.getElementById('container-saberes'),
+        genero: document.getElementById('container-genero'),
+        astronomia: document.getElementById('container-astronomia'),
+        filosofia: document.getElementById('container-filosofia'),
+        agro: document.getElementById('container-agro'),
+        etno: document.getElementById('container-etno'),
+        saude: document.getElementById('container-saude')
+      };
+
+      // Reseta e limpa containers
+      Object.keys(containers).forEach(key => {
+        const c = containers[key];
+        const sec = document.getElementById(key);
+        if (c) c.innerHTML = '';
+        if (sec) sec.classList.remove('hidden');
+      });
+
+      const counts = {};
+      list.forEach(item => {
+        const match = !q || 
+                      (item.titulo && item.titulo.toLowerCase().includes(q)) || 
+                      (item.tipoPublicacao && item.tipoPublicacao.toLowerCase().includes(q)) ||
+                      (item.eixo && item.eixo.toLowerCase().includes(q));
+        if (match) {
+          const c = containers[item.eixo];
+          if (c) {
+            c.innerHTML += renderCard(item);
+            counts[item.eixo] = (counts[item.eixo] || 0) + 1;
+          }
+        }
+      });
+
+      // Se houver busca e alguma seção não tiver correspondência, oculta ela temporariamente
+      if (q) {
+        Object.keys(containers).forEach(key => {
+          const sec = document.getElementById(key);
+          if (sec && !counts[key]) {
+            sec.classList.add('hidden');
+          }
+        });
+      }
+
+      // Re-habilita drag e ícones Lucide
+      Object.values(containers).forEach(c => {
+        if (c) enableMouseDragScroll(c);
+      });
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    function distributeCards(data) {
+      applyTrilhasFilter(document.getElementById('trilhas-search-input')?.value || '');
+    }
+
+    // Rolagem suave do carrossel de temas
+    function scrollTemasCarousel() {
+      const carousel = document.getElementById('temas-icons-carousel');
+      if (!carousel) return;
+      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 25) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: 240, behavior: 'smooth' });
+      }
+    }
+
+    // Rolagem suave até a playlist selecionada
+    function scrollToPlaylist(eixoId) {
+      const el = document.getElementById(eixoId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.add('brightness-125');
+        setTimeout(() => el.classList.remove('brightness-125'), 400);
+      }
+    }
+
+    // Inicialização da página e do PWA
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      loadTrilhasData();
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('[PWA] Service Worker ativo:', reg.scope))
+            .catch(err => console.log('[PWA] Falha no SW:', err));
+        });
+      }
+    });
+  </script>
+</body>
+</html>
